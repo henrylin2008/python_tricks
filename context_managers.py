@@ -1,3 +1,4 @@
+# https://www.youtube.com/watch?v=C-gEQdGVXbk&t=561s
 # f = open('test.txt', 'r')
 # file_contents = f.read()
 # f.close()
