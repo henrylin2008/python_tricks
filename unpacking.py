@@ -1,4 +1,5 @@
-#unpacking
+# https://www.youtube.com/watch?v=C-gEQdGVXbk&t=561s
+# unpacking
 a, _ = (1, 2) # _ = variable not going to use
 print(a) # 1
 # print(b)
