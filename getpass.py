@@ -9,6 +9,6 @@
 from getpass import getpass
 
 username = input('Username: ')
-password = getpass('Password: ') # no text entered in the display 
+password = getpass('Password: ') # no text entered in the display
 
 print("Logging in... ")
