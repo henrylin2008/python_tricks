@@ -51,7 +51,48 @@ sorted(xs.items(), key=operator.itemgetter(1))
 sorted(xs.items(),
        key=lambda x: x[1],
        reverse=True)
+
+
 # [('a', 4), ('b', 3), ('c', 2), ('d', 1)]
 
 
 # 7.3 Emulating Switch/Case
+# Store function in a list
+def myfunc(a, b):
+    return a + b
+
+
+funcs = [myfunc]
+funcs[0]
+# <function myfunc at 0x107012230>
+
+funcs[0](2, 3)
+5
+
+# define a dictionary that maps lookup keys for the input conditions to functions that will carry out the intended
+# operations:
+func_dict = {
+    'cond_a': handle_a,
+    'cond_b': handle_b
+}
+
+# dictionary key lookup to get the handler function
+# keyError if cond can't be found in the dictionary
+cond = 'cond_a'
+func_dict[cond]()
+
+# Python dicts have a get() method on them that returns the value for a given key, or a default value if the key can’t
+# be found.
+# if the condition can’t be found in the dictionary, we avoid raising a KeyError and call the default handler function
+# instead.
+func_dict.get(cond, handle_default)()
+
+# use a dictionary to map opcodes to arithmetic operations with first-class functions
+# Implicit return None statement as default
+def dispatch_dict(operator, x, y):
+    return {
+        'add': lambda: x + y,
+        'sub': lambda: x - y,
+        'mul': lambda: x * y,
+        'div': lambda: x / y,
+    }.get(operator, lambda: None)()
