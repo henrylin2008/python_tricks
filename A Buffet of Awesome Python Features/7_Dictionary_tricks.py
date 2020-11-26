@@ -38,9 +38,20 @@ sorted(xs.items())
 # get a sorted representation of a dictionary based on its values (second element)
 sorted(xs.items(), key=lambda x: x[1])
 # [('d', 1), ('c', 2), ('b', 3), ('a', 4)]
+# sorted(xs.items(), key=lambda x: abs(x[1])), get absolute value of second item
 
 # using operator; ex: operator.itemgetter, operator.attrgetter
 import operator
 
 sorted(xs.items(), key=operator.itemgetter(1))
 # [('d', 1), ('c', 2), ('b', 3), ('a', 4)]
+
+
+# reverse the sort order so that larger values go first
+sorted(xs.items(),
+       key=lambda x: x[1],
+       reverse=True)
+# [('a', 4), ('b', 3), ('c', 2), ('d', 1)]
+
+
+# 7.3 Emulating Switch/Case
