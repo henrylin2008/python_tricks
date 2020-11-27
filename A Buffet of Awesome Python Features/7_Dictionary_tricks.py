@@ -88,7 +88,7 @@ func_dict[cond]()
 func_dict.get(cond, handle_default)()
 
 # use a dictionary to map opcodes to arithmetic operations with first-class functions
-# Implicit return None statement as default
+# Implicit return None statement as default if operator does not exist
 def dispatch_dict(operator, x, y):
     return {
         'add': lambda: x + y,
@@ -96,3 +96,22 @@ def dispatch_dict(operator, x, y):
         'mul': lambda: x * y,
         'div': lambda: x / y,
     }.get(operator, lambda: None)()
+
+
+# 7.4: Dict Expression
+{True: 'yes', 1: 'no', 1.0: 'maybe'}
+# {True: 'maybe'}
+# Key: Python’s dictionaries don’t update the key object itself when a new value is associated with it.
+# because the keys True, 1, and 1.0 all compare as equal, and they all have the same hash value.
+# >>> True == 1 == 1.0
+# True
+# >>> (hash(True), hash(1), hash(1.0))
+# (1, 1, 1)
+
+# Value: As the interpreter evaluates the dictionary expression, it repeatedly overwrites the value for the key True.
+
+# -Dictionaries treat keys as identical if their __eq__ comparison result says they’re equal and their hash values
+# are the same.
+# -Unexpected dictionary key collisions can and will lead to surprising results.
+
+
