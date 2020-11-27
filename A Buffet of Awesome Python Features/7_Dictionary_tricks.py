@@ -115,3 +115,27 @@ def dispatch_dict(operator, x, y):
 # -Unexpected dictionary key collisions can and will lead to surprising results.
 
 
+# 7.5 Merge Dictionaries
+xs = {'a': 1, 'b': 2}
+ys = {'b': 3, 'c': 4}
+# classical solution: use the built-in dictionary update()
+zs = {}
+zs.update(xs)
+zs.update(ys)
+# zs: {'a': 1, 'b': 3, 'c': 4}
+
+# Another technique: combined with the **-operator for "unpacking" objects
+zs = dict(xs, **ys)
+# zs: {'a': 1, 'b': 3, 'c': 4}
+
+# Python 3.5+
+zs = {**xs, **ys}
+# zs: {'a': 1, 'b': 3, 'c': 4}
+
+# Key Takeaways:
+# In Python 3.5 and above you can use the **-operator to merge multiple dictionary objects into one
+# with a single expression, overwriting existing keys left-to-right.
+# To stay compatible with older versions of Python, you might want to use the built-in dictionary update() method
+# instead.
+
+
