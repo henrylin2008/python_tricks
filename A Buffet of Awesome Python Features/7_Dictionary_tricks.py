@@ -139,3 +139,27 @@ zs = {**xs, **ys}
 # instead.
 
 
+# 7.6 Pretty-Printing
+mapping = {'a': 23, 'b': 42, 'c': 0xc0ffee}
+# use json.dumps() to pretty-print Python dicts with nicer formatting
+import json
+json.dumps(mapping, indent=4, sort_keys=True)
+# { "a": 23, "b": 42, "c": 12648430 } Printing dictionaries with the json module only works with dicts that can be
+# serialized by it. As of Python 3.75, the supported built-in types are:
+#   -dict
+#   -list, tuple
+#   -str
+#   -int, float (and some Enums)
+#   -bool
+#   -None
+
+# The classical solution to pretty-printing objects in Python is the built-in pprint module.
+#
+import pprint
+pprint.pprint(mapping)
+# {'a': 23, 'b': 42, 'c': 12648430, 'd': set([1, 2, 3])}
+#
+# Key Takeaways:
+# The pprint and json module are “higher-fidelity” options built into the Python standard library.
+# Be careful to only use json.dumps() on JSON-serializable keys and values, otherwise it raises a TypeError.
+
