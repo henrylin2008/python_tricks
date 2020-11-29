@@ -222,7 +222,65 @@ car1
 #  extending collections.namedtuple or typing.NamedTuple.
 # -You need to pack data tightly to serialize it to disk or to send it over the network: Time to read up on
 #  struct.Struct because this is a great use case for it.
+
+# 5.4 Sets and Multisets
+# A set is an unordered collection of objects that does not allow duplicate elements.
+# In a “proper” set implementation, membership tests are expected to run in fast O(1) time. Union, intersection,
+# difference, and subset operations should take O(n) time on average.
+# The set type is mutable and allows for the dynamic insertion and deletion of elements.
 #
+# vowels = {'a', 'e', 'i', 'o', 'u'}
+# vowels.add('x')
+# vowels:
+# {'i', 'a', 'u', 'o', 'x', 'e'}
+
+# frozenset - Immutable sets
+# The frozenset class implements an immutable version of set that cannot be changed after it has been constructed.
+# >>> vowels = frozenset({'a', 'e', 'i', 'o', 'u'})
+# >>> vowels.add('p')
+# AttributeError:
+# "'frozenset' object has no attribute 'add'"
+#
+# Frozensets are hashable and can be used as dictionary keys:
+# >>> d = { frozenset({1, 2, 3}): 'hello' }
+# >>> d[frozenset({1, 2, 3})]
+# 'hello'
+
+
+# collections.Counter - Multisets
+# The collections.Counter class in the Python standard library implements a multiset (or bag) type that allows elements
+# in the set to have more than one occurrence.
+# This is useful if you need to keep track of not only if an element is part of a set, but also how many times it is
+# included in the set:
+#
+from collections import Counter
+inventory = Counter()
+#
+loot = {'sword': 1, 'bread': 3}
+inventory.update(loot)
+inventory
+# Counter({'bread': 3, 'sword': 1})
+#
+more_loot = {'sword': 1, 'apple': 1}
+inventory.update(more_loot)
+inventory
+# Counter({'bread': 3, 'sword': 2, 'apple': 1})
+
+len(inventory)
+# 3  # Unique elements
+sum(inventory.values())
+# 6 # Total no. of elements
+
+# Key Takeaways:
+# -Use the built-in set type when looking for a mutable set.
+# -frozenset objects are hashable and can be used as dictionary or set keys.
+# -collections.Counter implements multiset or “bag” data structures.
+
+
+
+
+
+
 
 
 
