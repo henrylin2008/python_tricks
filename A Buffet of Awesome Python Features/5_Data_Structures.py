@@ -276,11 +276,81 @@ sum(inventory.values())
 # -frozenset objects are hashable and can be used as dictionary or set keys.
 # -collections.Counter implements multiset or “bag” data structures.
 
+# 5.5 Stacks (LIFOs)
+# A stack is a collection of objects that supports fast last-in, first-out (LIFO) semantics for inserts and deletes.
+# Insert: push: O(1) time, append()
+# Delete: pop: O(1) time, pop()
+s = []
+s.append('eat')
+s.append('sleep')
+s.append('code')
+
+s
+# ['eat', 'sleep', 'code']
+
+s.pop()
+# 'code'
+s.pop()
+# 'sleep'
+s.pop()
+# 'eat'
+
+s.pop()
+# IndexError: "pop from empty list"
+
+# collections.deque - Fast & robust stacks
+# The deque class implements a double-ended queue that supports adding and removing elements from either end in O(1)
+# time (non-amortized).
+# pop(), append(): O(1) time
+# Randomly access elements in the middle of a stack: O(n)
+from collections import deque
+s = deque()
+s.append('eat')
+s.append('sleep')
+s.append('code')
+
+s
+# deque(['eat', 'sleep', 'code'])
+
+s.pop()
+# 'code'
+s.pop()
+# 'sleep'
+s.pop()
+# 'eat'
+
+s.pop()
+# IndexError: "pop from an empty deque"
+
+# queue.LifoQueue – Locking Semantics for Parallel Computing
+from queue import LifoQueue
+s = LifoQueue()
+s.put('eat')
+s.put('sleep')
+s.put('code')
+
+s
+# <queue.LifoQueue object at 0x108298dd8>
+
+s.get()
+# 'code'
+s.get()
+# 'sleep'
+s.get()
+# 'eat'
+
+s.get_nowait()
+# queue.Empty
+
+s.get()
+# Blocks / waits forever...
+
+# collections.deque is an excellent choice for implementing a stack (LIFO queue) in Python.
+
+# Key Takeaways:
+# -collections.deque provides a safe and fast general-purpose stack implementation.
+# -The built-in list type can be used as a stack, but be careful to only append and remove items with append() and pop()
+#  in order to avoid slow performance.
 
 
-
-
-
-
-
-
+#
