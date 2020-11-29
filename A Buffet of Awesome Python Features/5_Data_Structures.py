@@ -1,6 +1,7 @@
 # 5.1 Dictionaries, Maps, and Hashtables
 # Dictionary: O(1) time complexity for lookup, insert, update, and delete operations in the average case
 import collections
+
 d = collections.OrderedDict(one=1, two=2, three=3)
 # d: OrderedDict([('one', 1), ('two', 2), ('three', 3)])
 d['four'] = 4
@@ -11,6 +12,7 @@ d.keys()
 # The defaultdict class is another dictionary subclass that accepts a callable in its constructor whose return value
 # will be used if a requested key cannot be found.
 from collections import defaultdict
+
 dd = defaultdict(list)
 
 # Accessing a missing key creates it and
@@ -27,6 +29,7 @@ dd['dogs']
 # underlying mappings one by one until a key is found. Insertions, updates, and deletions only affect the first
 # mapping added to the chain.
 from collections import ChainMap
+
 dict1 = {'one': 1, 'two': 2}
 dict2 = {'three': 3, 'four': 4}
 chain = ChainMap(dict1, dict2)
@@ -46,6 +49,7 @@ chain['missing']
 # Using MappingProxyType allows you to return a dictionary carrying internal state from a class or module, while
 # discouraging write access to this object.
 from types import MappingProxyType
+
 writable = {'one': 1, 'two': 2}
 read_only = MappingProxyType(writable)
 
@@ -66,7 +70,159 @@ read_only
 # -Specialized implementations, like read-only or ordered dicts, are available in the Python standard library.
 
 
+# 5.2 Array
+# Arrays consist of fixed-size data records that allow each element to be efficiently located based on its index.
+# It’s very fast to look up an element contained in an array given the element’s index. A proper array
+# implementation guarantees a constant O(1) access time for this case.
 
+# List: implemented as dynamic arrays behind the scenes
+# ex: arr = ['one', 'two', 'three']
+
+# Tuple: objects are immutable. This means elements can’t be added or removed dynamically—all elements in a
+# tuple must be defined at creation time.
+# ex: arr = 'one', 'two', 'three'
+
+# array.array: (single data type)
+# Arrays created with the array.array class are mutable and behave similarly to lists, except for one
+# important difference—they are “typed arrays” constrained to a single data type.
+import array
+
+arr = array.array('f', (1.0, 1.5, 2.0, 2.5))
+# arr[1]: 1.5
+
+# str: (single data type)
+# String objects are space-efficient because they’re tightly packed and they specialize in a single data type.
+# - strings are immutable
+# - Not support item assignment, item deletino
+# ex: arr = 'abcd'
+# Strings are immutable:
+# >>> arr[1] = 'e'
+# TypeError:
+# "'str' object does not support item assignment"
+
+# bytes: immutable arrays of single bytes
+# Bytes objects are immutable sequences of single bytes (integers in the range of 0 <= x <= 255).
+# - immutable
+# - Does not support item assignment, item deletion
+# ex:
+# >>> arr = bytes((0, 1, 2, 3))
+# >>> arr[1]
+# 1
+
+# bytearray
+# The bytearray type is a mutable sequence of integers in the range 0 <= x <= 255.
+# - mutable
+# - overwrite elements, remove elements, or add new ones s
+# >>> arr = bytearray((0, 1, 2, 3))
+# >>> arr[1]
+# 1
+
+# Key Takeaways
+# You need to store arbitrary objects, potentially with mixed data types?
+# Use a list or a tuple, depending on whether you want an immutable data structure or not.
+#
+# You have numeric (integer or floating point) data and tight packing and performance is important?
+# Try out array.array and see if it does everything you need. Also, consider going beyond the standard library and try
+# out packages like NumPy or Pandas.
+#
+# You have textual data represented as Unicode characters?
+# Use Python’s built-in str. If you need a “mutable string,” use a list of characters.
+#
+# You want to store a contiguous block of bytes?
+# Use the immutable bytes type, or bytearray if you need a mutable data structure.
+
+# 5.3 Records, Structs, and Data Transfer Objects
+# Dictionaries:
+# Dictionaries are also often called maps or associative arrays and allow for the efficient lookup, insertion, and
+# deletion of any object associated with a given key.
+# there’s little protection against misspelled field names, as fields can be added and removed freely at any time.
+#
+# ex:
+# car1 = {
+#     'color': 'red',
+#     'mileage': 3812.4,
+#     'automatic': True,
+# }
+#
+# tuple
+# -Immutable
+# - Take up slightly less memory than lists in CPython
+
+# Custom class
+# Classes allow you to define reusable “blueprints” for data objects to ensure each object provides the same set of
+# fields.
+# - a great option whenever you’d like to add business logic and behavior to your record objects using methods.
+
+# Data objects
+# The namedtuple class provides an extension of the build-in tuple data type
+# Namedtuples are immutable
+from collections import namedtuple
+
+Car = namedtuple('Car', 'color mileage automatic')
+car1 = Car('red', 3812.4, True)
+car1
+# Car(color='red', mileage=3812.4, automatic=True)
+
+# typing.NamedTuple - Improved Namedtuples
+from typing import NamedTuple
+
+class Car(NamedTuple):
+    color: str
+    mileage: float
+    automatic: bool
+
+
+car1 = Car('red', 3812.4, True)
+
+# struct.Struct - Serialized C Structs
+# The struct.Struct class converts between Python values and C structs serialized into Python bytes objects.
+from struct import Struct
+MyStruct = Struct('i?f')
+data = MyStruct.pack(23, False, 42.0)
+
+# All you get is a blob of data:
+data
+# b'\x17\x00\x00\x00\x00\x00\x00\x00\x00\x00(B'
+
+# Data blobs can be unpacked again:
+MyStruct.unpack(data)
+# (23, False, 42.0)
+
+# types.SimpleNamespace - Fancy Attribute Access
+# it provides attribute access to its namespace.
+# This means SimpleNamespace instances expose all of their keys as class attributes. This means you can use obj.key
+# “dotted” attribute access instead of the obj['key'] square-brackets indexing syntax that’s used by regular dicts.
+#
+from types import SimpleNamespace
+car1 = SimpleNamespace(color='red',
+                       mileage=3812.4,
+                       automatic=True)
+
+# The default repr:
+>>> car1
+# namespace(automatic=True, color='red', mileage=385.3)
+
+# Instances support attribute access and are mutable:
+car1.mileage = 12
+car1.windshield = 'broken'
+del car1.automatic
+car1
+# namespace(color='red', mileage=12, windshield='broken')
+
+# Key Takeaways
+# -You only have a few (2-3) fields: Using a plain tuple object may be okay if the field order is easy to remember or
+# field names are superfluous. For example, think of an (x, y, z) point in 3D space.
+# -You need immutable fields: In this case, plain tuples, collections.namedtuple, and typing.NamedTuple would all make
+# good options for implementing this type of data object.
+# -You need to lock down field names to avoid typos: collections.namedtuple and typing.NamedTuple are your friends here.
+# -You want to keep things simple: A plain dictionary object might be a good choice due to the convenient syntax that
+#  closely resembles JSON.
+# -You need full control over your data structure: It’s time to write a custom class with @property setters and getters.
+# -You need to add behavior (methods) to the object: You should write a custom class, either from scratch or by
+#  extending collections.namedtuple or typing.NamedTuple.
+# -You need to pack data tightly to serialize it to disk or to send it over the network: Time to read up on
+#  struct.Struct because this is a great use case for it.
+#
 
 
 
