@@ -353,4 +353,97 @@ s.get()
 #  in order to avoid slow performance.
 
 
+# 5.6 Queues (FIFOs)
+# Insert: enqueue, O(1) time
+# Delete: dequeue, O(1) time
+# a proper queue implementation is expected to take O(1) time for insert and delete operations.
 #
+# collections.deque - Fast & Robust Queues
+# The deque class implements a double-ended queue that supports adding and removing elements from either end in O(1)
+# time
+# Excellent performance for inserting and deleting elements.
+# Poor O(n) performance for randomly accessing elements in the middle of the stack
+from collections import deque
+q = deque()
+q.append('eat')
+q.append('sleep')
+q.append('code')
+
+q
+# deque(['eat', 'sleep', 'code'])
+
+q.popleft()
+# 'eat'
+q.popleft()
+# 'sleep'
+q.popleft()
+# 'code'
+
+q.popleft()
+# IndexError: "pop from an empty deque"
+
+# queue.Queue - Locking Semantics for Parallel Computing
+# The queue module contains several other classes implementing multi-producer/multi-consumer queues that are useful for
+# parallel computing.
+#
+# >>> from queue import Queue
+# >>> q = Queue()
+# >>> q.put('eat')
+# >>> q.put('sleep')
+# >>> q.put('code')
+#
+# >>> q
+# <queue.Queue object at 0x1070f5b38>
+#
+# >>> q.get()
+# 'eat'
+# >>> q.get()
+# 'sleep'
+# >>> q.get()
+# 'code'
+#
+# >>> q.get_nowait()
+# queue.Empty
+#
+# >>> q.get()
+# Blocks / waits forever...
+
+
+# multiprocessing.Queue - Shared Job Queues
+# allows queued items to be processed in parallel by multiple concurrent workers.
+# As a specialized queue implementation meant for sharing data between processes, multiprocessing.Queue makes it easy
+# to distribute work across multiple processes in order to work around the GIL limitations.
+#
+# > from multiprocessing import Queue
+# >>> q = Queue()
+# >>> q.put('eat')
+# >>> q.put('sleep')
+# >>> q.put('code')
+#
+# >>> q
+# <multiprocessing.queues.Queue object at 0x1081c12b0>
+#
+# >>> q.get()
+# 'eat'
+# >>> q.get()
+# 'sleep'
+# >>> q.get()
+# 'code'
+#
+# >>> q.get()
+# # Blocks / waits forever...
+
+
+# Key Takeaways
+# -list objects can be used as queues, but this is generally not recommended due to slow performance.
+# -If you’re not looking for parallel processing support, the implementation offered by collections.deque is an
+#  excellent default choice for implementing a FIFO queue data structure in Python. It provides the performance
+#  characteristics you’d expect from a good queue implementation and can also be used as a stack (LIFO Queue).
+#
+
+
+
+
+
+
+
