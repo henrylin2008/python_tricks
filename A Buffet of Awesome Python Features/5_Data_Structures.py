@@ -441,9 +441,79 @@ q.popleft()
 #  characteristics you’d expect from a good queue implementation and can also be used as a stack (LIFO Queue).
 #
 
+# Priority Queues
+# A priority queue is a container data structure that manages a set of records with totally-ordered keys (for example,
+# a numeric weight value) to provide quick access to the record with the smallest or largest key in the set.
+#
+# list – Maintaining a Manually Sorted Queue
+# You can use a sorted list to quickly identify and delete the smallest or largest element. The downside is that
+# inserting new elements into a list is a slow O(n) operation.
+# sorted lists are only suitable as priority queues when there will be few insertions.
+#
+q = []
+q.append((2, 'code'))
+q.append((1, 'eat'))
+q.append((3, 'sleep'))
+
+# NOTE: Remember to re-sort every time
+#       a new element is inserted, or use
+#       bisect.insort().
+q.sort(reverse=True)
+
+while q:
+    next_item = q.pop()
+    print(next_item)
+
+# Result:
+#   (1, 'eat')
+#   (2, 'code')
+#   (3, 'sleep')
+
+# heapq – List-Based Binary Heaps
+# This is a binary heap implementation usually backed by a plain list, and it supports insertion and extraction of the
+# smallest element in O(log n) time.
+import heapq
+
+q = []
+
+heapq.heappush(q, (2, 'code'))
+heapq.heappush(q, (1, 'eat'))
+heapq.heappush(q, (3, 'sleep'))
+
+while q:
+    next_item = heapq.heappop(q)
+    print(next_item)
+
+# Result:
+#   (1, 'eat')
+#   (2, 'code')
+#   (3, 'sleep')
 
 
+# queue.PriorityQueue - Beautiful Priority Queues
+# This priority queue implementation uses heapq internally and shares the same time and space complexities.
+# The difference is that PriorityQueue is synchronized and provides locking semantics to support multiple concurrent
+# producers and consumers.
+#
+from queue import PriorityQueue
 
+q = PriorityQueue()
 
+q.put((2, 'code'))
+q.put((1, 'eat'))
+q.put((3, 'sleep'))
 
+while not q.empty():
+    next_item = q.get()
+    print(next_item)
 
+# Result:
+#   (1, 'eat')
+#   (2, 'code')
+#   (3, 'sleep')
+
+# Key Takeaways
+# -queue.PriorityQueue stands out from the pack with a nice object-oriented interface and a name that clearly states its
+# intent. It should be your preferred choice.
+# -If you’d like to avoid the locking overhead of queue.PriorityQueue, using the heapq module directly is also a good option.
+#
