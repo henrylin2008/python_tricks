@@ -99,4 +99,14 @@ class NameTooCuteError(BaseValidationError):
 # ValueError or KeyError.
 # -You can use inheritance to define logically grouped exception hierarchies.
 
+# 4.4 Cloning Objects for Fun and Profit
+# A shallow copy means constructing a new collection object and then populating it with references to the child objects
+# found in the original. In essence, a shallow copy is only one level deep. The copying process does not recurse and
+# therefore won’t create copies of the child objects themselves.
+# A deep copy makes the copying process recursive. It means first constructing a new collection object and then
+# recursively populating it with copies of the child objects found in the original.
+#
 
+#
+#
+#
