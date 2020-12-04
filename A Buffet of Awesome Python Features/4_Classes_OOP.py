@@ -106,7 +106,21 @@ class NameTooCuteError(BaseValidationError):
 # A deep copy makes the copying process recursive. It means first constructing a new collection object and then
 # recursively populating it with copies of the child objects found in the original.
 #
+# Shallow copy: copy.copy()
+# Deep copy
+import copy
+xs = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+zs = copy.deepcopy(xs)
+xs
+# [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+zs
+# [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
-#
-#
-#
+# Both objects, the original and the copy, are fully independent this
+# time. xs was cloned recursively, including all of its child objects:
+xs[1][0] = 'X'
+xs
+# [[1, 2, 3], ['X', 5, 6], [7, 8, 9]]
+zs
+# [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
