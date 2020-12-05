@@ -107,7 +107,22 @@ class NameTooCuteError(BaseValidationError):
 # recursively populating it with copies of the child objects found in the original.
 #
 # Shallow copy: copy.copy()
-# Deep copy
+xs = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+ys = list(xs)   # make a shallow copy
+
+xs.appned(['new sublist'])
+# >>> xs
+# [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['new sublist']]
+# >>> ys
+# [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+#
+xs[1][0] = 'X'
+xs
+# [[1, 2, 3], ['X', 5, 6], [7, 8, 9], ['new sublist']]
+ys
+# [[1, 2, 3], ['X', 5, 6], [7, 8, 9]]
+
+# Deep copy: copy.deepcopy()
 import copy
 xs = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 zs = copy.deepcopy(xs)
