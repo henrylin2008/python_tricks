@@ -139,3 +139,12 @@ xs
 zs
 # [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
+# Copying Arbitrary Objects
+
+# Key Takeaways
+# -Making a shallow copy of an object won’t clone child objects. Therefore, the copy is not fully independent of the
+#  original.
+# -A deep copy of an object will recursively clone child objects. The clone is fully independent of the original, but
+#  creating a deep copy is slower.
+# -You can copy arbitrary objects (including custom classes) with the copy module.
+
