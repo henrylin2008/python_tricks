@@ -74,15 +74,19 @@ def validate(name):
 class BaseValidationError(ValueError):
     pass
 
+
 # "Real" Error Classes derived from the base error class
 class NameTooShortError(BaseValidationError):
     pass
 
+
 class NameTooLongError(BaseValidationError):
     pass
 
+
 class NameTooCuteError(BaseValidationError):
     pass
+
 
 # handle all of the errors
 # try:
@@ -108,9 +112,9 @@ class NameTooCuteError(BaseValidationError):
 #
 # Shallow copy: copy.copy()
 xs = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-ys = list(xs)   # make a shallow copy
+ys = list(xs)  # make a shallow copy
 
-xs.appned(['new sublist'])
+xs.append(['new sublist'])
 # >>> xs
 # [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['new sublist']]
 # >>> ys
@@ -124,6 +128,7 @@ ys
 
 # Deep copy: copy.deepcopy()
 import copy
+
 xs = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 zs = copy.deepcopy(xs)
 xs
@@ -148,3 +153,40 @@ zs
 #  creating a deep copy is slower.
 # -You can copy arbitrary objects (including custom classes) with the copy module.
 
+# 4.5 Abstract Base Classes Keep Inheritance in Check
+# Abstract Base Classes (ABCs) ensure that derived classes implement particular methods from the base class.
+from abc import ABCMeta, abstractmethod
+
+
+class Base(metaclass=ABCMeta):
+    @abstractmethod
+    def foo(self):
+        pass
+
+    @abstractmethod
+    def bar(self):
+        pass
+
+
+class Concrete(Base):
+    def foo(self):
+        pass
+
+    # We forget to declare bar() again...
+
+# The raised exception tells us which method or methods we’re missing:
+c = Concrete()
+# TypeError:
+# "Can't instantiate abstract class Concrete
+# with abstract methods bar"
+
+# Without abc, we’d only get a NotImplementedError if a missing method was actually called.
+# Using ABCs states the programmer’s intent clearly and thus makes the code more communicative.
+
+# Key Takeaways
+# -Abstract Base Classes (ABCs) ensure that derived classes implement particular methods from the base class at
+# instantiation time.
+# -Using ABCs can help avoid bugs and make class hierarchies easier to maintain.
+#
+
+# 4.6
