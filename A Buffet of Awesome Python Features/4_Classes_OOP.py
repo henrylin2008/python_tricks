@@ -195,5 +195,17 @@ c = Concrete()
 # ex:
 from collections import namedtuple
 
-Car = namedtuple('Car' , 'color mileage')
+Car = namedtuple('Car', 'color mileage')
 # First argument ('Car') is referred to as the "typename" in the Python docs
+# Above code, same as defined a Car class manually and given it a constructor accepting a "color" and a "mileage" value
+# Later can be called by the name (instead of the index)
+# Car = namedtuple('Car', [
+#     'color',
+#     'mileage',
+# ])
+
+# summary
+# namedtuples are a memory-efficient shortcut to defining an immutable class in Python manually.
+
+
+
