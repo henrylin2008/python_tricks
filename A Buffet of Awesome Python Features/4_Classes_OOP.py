@@ -189,4 +189,11 @@ c = Concrete()
 # -Using ABCs can help avoid bugs and make class hierarchies easier to maintain.
 #
 
-# 4.6
+# 4.6 What Namedtuples Are Good For
+# Namedtuples are immutable containers, just like regular tuples; "write once, read many" principle
+# Each object stored in them can be accessed through a unique (human-readable) identifier.
+# ex:
+from collections import namedtuple
+
+Car = namedtuple('Car' , 'color mileage')
+# First argument ('Car') is referred to as the "typename" in the Python docs
