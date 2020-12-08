@@ -207,5 +207,33 @@ Car = namedtuple('Car', 'color mileage')
 # summary
 # namedtuples are a memory-efficient shortcut to defining an immutable class in Python manually.
 
+# Subclassing Namedtuples
+# Since they are built on top of regular Python classes, you can even add methods to a namedtuple object.
+# The easiest way to create hierarchies of namedtuples is to use the base tuple’s _fields property:
+Car = namedtuple('Car', 'color mileage')
+ElectricCar = namedtuple('ElectricCar', Car._fields + ('charge',))
+# This gives the desired result:
+ElectricCar('red', 1234, 45.0)
+# ElectricCar(color='red', mileage=1234, charge=45.0)
 
+# _asdict() helper method. It returns the contents of a namedtuple as a dictionary:
+my_car._asdict()
+# OrderedDict([('color', 'red'), ('mileage', 3812.4)])
+# This is great for avoiding typos in the field names when generating JSON-output, for example:
+json.dumps(my_car._asdict())
+# '{"color": "red", "mileage": 3812.4}'
+
+# _replace() function: it creates a (shallow) copy of a tuple and allows you to selectively replace some of its fields
+my_car._replace(color='blue')
+# Car(color='blue', mileage=3812.4)
+
+# Lastly, the _make() classmethod can be used to create new instances of a namedtuple from a sequence or iterable:
+Car._make(['red', 999])
+# Car(color='red', mileage=999)
+
+# Key Takeaways
+# -collection.namedtuple is a memory-efficient shortcut to manually define an immutable class in Python.
+# -Namedtuples can help clean up your code by enforcing an easier-to-understand structure on your data.
+# -Namedtuples provide a few useful helper methods that all start with a single underscore, but are part of the public
+#  interface. It’s okay to use them.
 
