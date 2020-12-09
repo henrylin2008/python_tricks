@@ -237,3 +237,50 @@ Car._make(['red', 999])
 # -Namedtuples provide a few useful helper methods that all start with a single underscore, but are part of the public
 #  interface. It’s okay to use them.
 
+
+# 4.7 Class vs Instance Variable Pitfalls
+# -Class variables are declared inside the class definition (but outside of
+# any instance methods). They’re not tied to any particular instance of a class. Instead, class variables store their
+# contents on the class itself, and all objects created from a particular class share access to the same set of class
+# variables. This means, for example, that modifying a class variable affects all object instances at the same time.
+# -Instance variables are always tied to a particular object instance. Their contents are not stored on the class,
+# but on each individual object created from the class. Therefore, the contents of an instance variable are
+# completely independent from one object instance to the next. And so, modifying an instance variable only affects
+# one object instance at a time.
+class Dog:
+    num_legs = 4  # <- Class variable
+
+    def __init__(self, name):
+        self.name = name  # <- Instance variable
+
+
+jack = Dog('Jack')
+jill = Dog('Jill')
+jack.name, jill.name
+# ('Jack', 'Jill')
+
+jack.num_legs, jill.num_legs
+# (4, 4)
+Dog.num_legs
+# 4
+
+# If you try to access an instance variable through the class, it’ll fail with an AttributeError. Instance variables
+# are specific to each object instance and are created when the __init__ constructor runs—they don’t even exist on the
+# class itself.
+
+Dog.name
+# AttributeError:
+# "type object 'Dog' has no attribute 'name'"
+
+# Key Takeaways
+# -Class variables are for data shared by all instances of a class. They belong to a class, not a specific instance and
+# are shared among all instances of a class.
+# -Instance variables are for data that is unique to each instance. They belong to individual object instances and are
+# not shared among the other instances of a class. Each instance variable gets a unique backing store specific to the
+# instance.
+# -Because class variables can be “shadowed” by instance variables of the same name, it’s easy to (accidentally)
+# override class variables in a way that introduces bugs and odd behavior.
+#
+
+
+
