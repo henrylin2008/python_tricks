@@ -282,5 +282,60 @@ Dog.name
 # override class variables in a way that introduces bugs and odd behavior.
 #
 
+# 4.8 Instance, Class, and Static
+class MyClass:
+    def method(self):
+        return 'instance method called', self
+
+    @classmethod
+    def classmethod(cls):
+        return 'class method called', cls
+
+    @staticmethod
+    def staticmethod():
+        return 'static method called'
+
+# -Instance Methods:
+# takes one parameter, self, which points to an instance of MyClass when the method is called.
+# Through the self parameter, instance methods can freely access attributes and other methods on the same object. This
+# gives them a lot of power when it comes to modifying an object’s state.
+#
+obj = MyClass()
+obj.method()
+# ('instance method called', <MyClass instance at 0x11a2>)
+
+# -Class methods:
+# @classmethod, take a cls parameter that points to the class, and not the object instance- when the method is called
+# It can't modify object instance state; Class methods can still modify  class state that applies across all instances
+# of the class
+obj.classmethod()
+# ('class method called', <class MyClass at 0x11a2>
+# Python only allows one __init__ method per class. Using class methods makes it possible to add as many alternative
+# constructors as necessary.
+
+
+# -Static Methods:
+# @staticmethod, takes no parameter
+# It cannot modify object state or class state. Static methods are restricted in what data they can access—they’re
+# primarily a way to namespace your methods.
+obj.staticmethod()
+# 'static method called'
+# the static methods can neither access the object instance state nor the class state.
+# Flagging a method as a static method is not just a hint that a method won’t modify class or instance state. As you’ve
+# seen, this restriction is also enforced by the Python runtime.
+# Static methods also have benefits when it comes to writing test code. code. Since the circle_area() method is
+# completely independent from the rest of the class, it’s much easier to test.
+#
+#
+# Key Takeaways
+# -Instance methods need a class instance and can access the instance through self.
+# -Class methods don’t need a class instance. They can’t access the instance (self) but they have access to the class
+#  itself via cls.
+# -Static methods don’t have access to cls or self. They work like regular functions but belong to the class’ namespace.
+# -Static and class methods communicate and (to a certain degree) enforce developer intent about class design. This can
+#  have definite maintenance benefits.
+
+
+
 
 
