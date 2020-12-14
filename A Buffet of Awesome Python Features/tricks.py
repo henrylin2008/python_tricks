@@ -69,3 +69,23 @@ from copy import deepcopy
 l = [[1, 2], [3, 4]]
 l2 = deepcopy(l)
 print(l2)  # [[1,2], [3,4]]
+
+# Dictionary Get
+# Returning None or default value, when key is not in dict
+d = {'a': 1, 'b': 2}
+print(d.get('c', 3))  # 3 is default value, returning 3
+
+# Sort Dictionary by Value
+# Sort a dictionary by its values with the built-in sorted() function and a 'key' argument.
+d = {'a': 10, 'b': 12, 'c': 7, 'f': 2, 'e': 8, 'd': 3}
+print(sorted(d.items(), key=lambda x: x[1]))
+# [('f', 2), ('d', 3), ('c', 7), ('e', 8), ('a', 10), ('b', 12)]
+
+# Sort using operator.itemgetter as the sort key instead of a lambda
+from operator import itemgetter
+
+print(sorted(d.items(), key=itemgetter(1)))
+
+# sort dict keys by value
+print(sorted(d, key=d.get))
+# ['f', 'd', 'c', 'e', 'a', 'b']
