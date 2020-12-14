@@ -99,4 +99,18 @@ def minIndex(lst):
 
 
 def maxIndex(lst):
-    return max(range(len(lst)), key=lst.__getitem__) #0
+    return max(range(len(lst)), key=lst.__getitem__)  # 0
+
+
+# remove duplicates from a list
+items = [2, 2, 3, 3, 1]
+items2 = list(set(items))
+print(items2)  # [1, 2, 3]
+
+# remove dupls and keep order
+from collections import OrderedDict
+
+items = ["foo", "bar", "bar", "foo"]
+print(list(OrderedDict.fromkeys(items).keys()))  # ['foo', 'bar']
+
+
