@@ -89,3 +89,14 @@ print(sorted(d.items(), key=itemgetter(1)))
 # sort dict keys by value
 print(sorted(d, key=d.get))
 # ['f', 'd', 'c', 'e', 'a', 'b']
+
+# Find min and max index in List
+lst = [40, 10, 20, 30]
+
+
+def minIndex(lst):
+    return min(range(len(lst)), key=lst.__getitem__)  # 1
+
+
+def maxIndex(lst):
+    return max(range(len(lst)), key=lst.__getitem__) #0
