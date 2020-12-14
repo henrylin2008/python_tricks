@@ -4,6 +4,7 @@ sorted(xs.items(), key=lambda x: x[1])
 # [('d', 1), ('c', 2), ('b', 3), ('a', 4)]
 # Or:
 import operator
+
 sorted(xs.items(), key=operator.itemgetter(1))
 # [('d', 1), ('c', 2), ('b', 3), ('a', 4)]
 
@@ -24,7 +25,6 @@ if x or y or z:
 if any((x, y, z)):
     print('passed')
 
-
 # How to merge two dictionaries in Python 3.5+
 x = {'a': 1, 'b': 2}
 y = {'b': 3, 'c': 4}
@@ -43,3 +43,29 @@ z
 # duplicates from left to right.
 #
 # See: https://www.youtube.com/watch?v=Duexw08KaC8
+
+# Copying List
+# a fast way to make a shallow copy of a list
+a  # [1,2,3,4,5]
+b = a
+b[0] = 10
+# both a and b will be [10,2,3,4,5]
+
+b = a[:]
+b[0] = 10
+# only b will change to [10,2,3,4,5]
+
+# copy list by typecasting method
+a = [1, 2, 3, 4, 5]
+print(list(a))
+
+# using the list.copy() method (python3 only)
+a = [1, 2, 3, 4, 5]
+print(a.copy())
+
+# copy nested lists using copy.deepcopy
+from copy import deepcopy
+
+l = [[1, 2], [3, 4]]
+l2 = deepcopy(l)
+print(l2)  # [[1,2], [3,4]]
