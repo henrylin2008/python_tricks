@@ -136,6 +136,7 @@ greeting(333333)
 # Why Python is Great: Namedtuples
 # Using namedtuple is way shorter than defining a class manually:
 from collections import namedtuple
+
 Car = namedtuple('Car', 'color mileage')
 
 # Our new "Car" class works as expected:
@@ -151,4 +152,24 @@ my_car
 
 # Like tuples, namedtuples are immutable:
 my_car.color = 'blue'
+
+
 # AttributeError: "can't set attribute"
+
+
+# Function argument unpacking
+def print_vector(x, y, z):
+    print('<%s, %s, %s>' % (x, y, z))
+
+
+# unpack tuple
+tuple_vec = (1, 0, 1)
+print_vector(*tuple_vec)
+# <1, 0, 1>
+
+# unpack dictionary
+dict_vec = {'x': 1, 'y': 0, 'z': 1}
+print_vector(**dict_vec)
+# <1, 0, 1>
+print_vector(*dict_vec)  # unpacking the keys
+# <x, y, z>
