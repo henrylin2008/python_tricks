@@ -61,3 +61,15 @@ callable('hello')
 #  do this are called closures.
 # -Objects can be made callable. In many cases this allows you to treat them like functions.
 #
+
+# 3.2 Lambdas are single-expression functions
+tuples = [(1, 'd'), (2, 'b'), (4, 'a'), (3, 'c')]
+sorted(tuples, key=lambda x: x[1]) # sorting a list of tuples by the second value in each tuple
+# [(4, 'a'), (2, 'b'), (3, 'c'), (1, 'd')]
+
+# Key Takeaways
+# -Lambda functions are single-expression functions that are not necessarily bound to a name (anonymous).
+# -Lambda functions can’t use regular Python statements and always include an implicit return statement.
+# -Always ask yourself: Would using a regular (named) function or a list comprehension offer more clarity?
+#
+
