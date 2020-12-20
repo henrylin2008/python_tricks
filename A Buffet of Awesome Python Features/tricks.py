@@ -189,3 +189,21 @@ print(json.dumps(my_mapping, indent=4, sort_keys=True))
     "b": 42,
     "c": 12648430
 }
+
+# loops
+my_items = ['a', 'b', 'c']
+for i in range(len(my_items)):
+    print(my_items[i])
+# a
+# b
+# c
+for i in my_items:
+    print(i)
+# a
+# b
+# c
+for i, item in enumerate(items):
+    print(i, item)
+# 0 a
+# 1 b
+# 2 c
