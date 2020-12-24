@@ -183,6 +183,7 @@ my_mapping
 
 # The "json" module can do a much better job:
 import json
+
 print(json.dumps(my_mapping, indent=4, sort_keys=True))
 # {
 #     "a": 23,
@@ -218,6 +219,7 @@ for i, item in enumerate(items):
 # can take a valid Python callable or None. If a callable is provided, then it’ll automatically be called by defaultdict
 # whenever you try to access or modify the value associated with a missing key.
 from collections import defaultdict
+
 dd = defaultdict(list)
 dd['missing_key']
 # []
@@ -253,6 +255,7 @@ dep_dd
 
 # Counting items
 from collections import defaultdict
+
 dep = [('Sales', 'John Doe'),
        ('Sales', 'Martin Smith'),
        ('Accounting', 'Jane Doe'),
@@ -286,3 +289,41 @@ for product, income in dd.items():
 # Total income for Books: $3,970.00
 # Total income for Tutorials: $1,940.00
 # Total income for Courses: $7,680.00
+
+
+# Collections.Counter
+# return 0 for non-existing item
+from collections import Counter
+
+c = Counter(cats=4, dogs=3)
+print(c['pets'])
+# 0
+
+print(list(c.elements()))  # print list of elements
+['cats', 'cats', 'cats', 'cats', 'dogs', 'dogs', 'dogs']
+
+Counter('mississippi').most_common(2)  # most (first 2) common items
+[('i', 4), ('s', 4)]
+
+c = Counter(a=4, b=3, c=2, d=0)
+d = ['a', 'b', 'b', 'c', 'c']
+c.subtract(d)  # subtraction: items in c - d
+c
+# Counter({'a': 3, 'b': 1, 'c': 0, 'd': 0})
+c.update(d)  # adding c and d
+c
+# Counter({'a': 4, 'b': 3, 'c': 2, 'd': 0})
+c.clear()   # clear out c
+c
+# Counter()
+
+c = Counter(a=4, b=3, c=2, d=0)
+d = Counter(['a','b','b','c','c'])
+c + d   # sum up c and d, item with 0 not showing
+# Counter({'a': 5, 'b': 5, 'c': 4})
+c - d   # subtract d from c
+# Counter({'a': 3, 'b': 1})
+c & d   # intersection of c & d, minimum item from both lists
+# Counter({'b': 2, 'c': 2, 'a': 1})
+c | d   # union of c & d, max item from both list
+# Counter({'a': 4, 'b': 3, 'c': 2})
