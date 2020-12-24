@@ -233,3 +233,20 @@ dd
 # 3.If your code relies on dictionaries for aggregating, accumulating, counting, or grouping values, and performance is
 # a concern, then you should consider using a defaultdict.
 
+# grouping defaultdict
+dep = [('Sales', 'John Doe'),
+       ('Sales', 'Martin Smith'),
+       ('Accounting', 'Jane Doe'),
+       ('Marketing', 'Elizabeth Smith'),
+       ('Marketing', 'Adam Doe')]
+
+from collections import defaultdict
+
+dep_dd = defaultdict(list)
+for department, employee in dep:
+    dep_dd[department].append(employee)
+
+dep_dd
+# defaultdict(<class 'list'>, {'Sales': ['John Doe', 'Martin Smith'],
+#                              'Accounting' : ['Jane Doe'],
+#                              'Marketing': ['Elizabeth Smith', 'Adam Doe']})
