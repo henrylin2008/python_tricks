@@ -250,3 +250,16 @@ dep_dd
 # defaultdict(<class 'list'>, {'Sales': ['John Doe', 'Martin Smith'],
 #                              'Accounting' : ['Jane Doe'],
 #                              'Marketing': ['Elizabeth Smith', 'Adam Doe']})
+
+# Counting items
+from collections import defaultdict
+dep = [('Sales', 'John Doe'),
+       ('Sales', 'Martin Smith'),
+       ('Accounting', 'Jane Doe'),
+       ('Marketing', 'Elizabeth Smith'),
+       ('Marketing', 'Adam Doe')]
+dd = defaultdict(int)
+for department, _ in dep:
+    dd[department] += 1
+dd
+# defaultdict(<class 'int'>, {'Sales': 2, 'Accounting': 1, 'Marketing': 2})
