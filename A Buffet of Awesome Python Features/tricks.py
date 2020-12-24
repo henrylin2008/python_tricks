@@ -263,3 +263,26 @@ for department, _ in dep:
     dd[department] += 1
 dd
 # defaultdict(<class 'int'>, {'Sales': 2, 'Accounting': 1, 'Marketing': 2})
+
+# Accumulating Values
+incomes = [('Books', 1250.00),
+           ('Books', 1300.00),
+           ('Books', 1420.00),
+           ('Tutorials', 560.00),
+           ('Tutorials', 630.00),
+           ('Tutorials', 750.00),
+           ('Courses', 2500.00),
+           ('Courses', 2430.00),
+           ('Courses', 2750.00)]
+
+from collections import defaultdict
+
+dd = defaultdict(float)
+for product, income in incomes:
+    dd[product] += income
+
+for product, income in dd.items():
+    print(f'Total income for {product}: ${income:,.2f}')
+# Total income for Books: $3,970.00
+# Total income for Tutorials: $1,940.00
+# Total income for Courses: $7,680.00
