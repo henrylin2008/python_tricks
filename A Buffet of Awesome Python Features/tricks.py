@@ -207,3 +207,29 @@ for i, item in enumerate(items):
 # 0 a
 # 1 b
 # 2 c
+
+# Defaultdict vs regular dict
+# The main difference between defaultdict and dict is that when you try to access or
+# modify a key that’s not present in the dictionary, a default value is automatically given to that key. In order to
+# provide this functionality, the Python defaultdict type does two things:
+# 1. It overrides .__missing__().
+# 2. It adds .default_factory, a writable instance variable that needs to be provided at the time of instantiation.
+# The instance variable .default_factory will hold the first argument passed into defaultdict.__init__(). This argument
+# can take a valid Python callable or None. If a callable is provided, then it’ll automatically be called by defaultdict
+# whenever you try to access or modify the value associated with a missing key.
+from collections import defaultdict
+dd = defaultdict(list)
+dd['missing_key']
+# []
+dd
+# defaultdict(<class 'list'>, {'missing_key': []})
+# using a defaultdict to handle missing keys can be faster than using dict.setdefault()
+
+# guidelines when to use a defaultdict rather than a regular dict
+# 1.If your code is heavily base on dictionaries and you’re dealing with missing keys all the time, then you should
+# consider using a defaultdict rather than a regular dict.
+# 2.If your dictionary items need to be initialized with a constant default value, then you should consider using a
+# defaultdict instead of a dict.
+# 3.If your code relies on dictionaries for aggregating, accumulating, counting, or grouping values, and performance is
+# a concern, then you should consider using a defaultdict.
+
