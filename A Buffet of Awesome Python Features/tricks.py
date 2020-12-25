@@ -327,3 +327,22 @@ c & d   # intersection of c & d, minimum item from both lists
 # Counter({'b': 2, 'c': 2, 'a': 1})
 c | d   # union of c & d, max item from both list
 # Counter({'a': 4, 'b': 3, 'c': 2})
+
+
+# collections deque
+from collections import deque
+d = deque('hello')
+d.append(4)   # deque(['h', 'e', 'l', 'l', 'o', 4])
+d.appendleft(5)     # deque([5, 'h', 'e', 'l', 'l', 'o', 4])
+d.pop()     # deque([5, 'h', 'e', 'l', 'l', 'o'])
+d.popleft()     # deque(['h', 'e', 'l', 'l', 'o'])
+d.clear()      # empty the deque object, deque([])
+d.extend('456')     # add all of the items  from the passed iterabale data type or collection to the end of the deque
+                    # to the end of the deque. deque(['4', '5', '6'])
+d.extend('hello')   # deque(['4', '5', '6', 'h', 'e', 'l', 'l', 'o'])
+d.extendleft('19')  # deque(['9', '1', '4', '5', '6', 'h', 'e', 'l', 'l', 'o'])
+d = deque("hello")  # rotate the deck by that many positions. Takes and iterable
+d.rotate(1)
+print(d) # prints deque(["o", "h", "e", "l", "l"])
+d.rotate(-2)
+print(d)  # prints deque(["e", "l", "l", "o", "h"])
