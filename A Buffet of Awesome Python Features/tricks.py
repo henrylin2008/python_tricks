@@ -346,3 +346,17 @@ d.rotate(1)
 print(d) # prints deque(["o", "h", "e", "l", "l"])
 d.rotate(-2)
 print(d)  # prints deque(["e", "l", "l", "o", "h"])
+
+# timeit.timeit
+import timeit
+timeit.timeit('"-".join(str(n) for n in range(100))',
+                  number=10000)
+
+0.3412662749997253
+
+# timeit.timeit(stmt, setup, timer, number)
+# stmt - which is the statement you want to measure; it defaults to ‘pass’.
+# setup - which is the code that you run before running the stmt; it defaults to ‘pass’.
+#         We generally use this to import the required modules for our code.
+# timer - which is a timeit.Timer object; it usually has a sensible default value so you don’t have to worry about it.
+# number - which is the number of executions you’d like to run the stmt.
