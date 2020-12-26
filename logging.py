@@ -12,14 +12,14 @@ logging.basicConfig(filename="./Lumberjack.log",
 # logger set to be >= (set level), ex: debug: 10 and above
 logger = logging.getLogger()
 
-# Test messages
+# Log level and the messages
 logger.debug("Debug message.")
 logger.info("Info message.")
 logger.warning("Warning message.")
 logger.error("Error message.")
 logger.critical("Critical message.")
 
-# print(logger.level)
+# print(logger.level), default log level is WARNING = 30 (and everything >30)
 # Level      |  Numeric value
 # NOTSET        0
 # DEBUG         10
