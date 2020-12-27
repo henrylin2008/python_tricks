@@ -108,4 +108,19 @@ greet()
 #  horrible, unmaintainable mess of a code base.”
 #
 
+# 3.4 Fun with *args & **kwargs
+# What are *args and **kwargs parameters used for? They allow a function to accept
+# optional arguments, so you can create flexible APIs in your modules and classes
+def foo(required, *args, **kwargs):
+    print(required)
+    if args:
+        print(args)
+    if kwargs:
+        print(kwargs)
+
+# *args will collect extra positional arguments as a tuple
+# **kwargs will collect extra keyword arguments as a dictionary
 #
+
+
+
