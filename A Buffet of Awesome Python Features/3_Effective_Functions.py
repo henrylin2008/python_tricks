@@ -73,3 +73,25 @@ sorted(tuples, key=lambda x: x[1]) # sorting a list of tuples by the second valu
 # -Always ask yourself: Would using a regular (named) function or a list comprehension offer more clarity?
 #
 
+# 3.3 The Power of Decorators
+# Decorators allow you to define reusable building blocks that can change or extend the behavior of other functions.
+# And, they let you do that without permanently modifying the wrapped function itself. The function’s behavior changes
+# only when it’s decorated.
+# A decorator is a callable that takes a callable as input and returns another callable.
+
+# Key Takeaways:
+# -Decorators define reusable building blocks you can apply to a callable to modify its behavior
+#  without permanently modifying the callable itself.
+# -The @ syntax is just a shorthand for calling the decorator on an input function. Multiple decorators on a single
+#  function are applied bottom to top (decorator stacking).
+# -As a debugging best practice, use the functools.wraps helper in your own decorators to carry over metadata from the
+#  undecorated callable to the decorated one.
+# -Just like any other tool in the software development toolbox, decorators are not a cure-all and they should not be
+#  overused. It’s important to balance the need to “get stuff done” with the goal of “not getting tangled up in a
+#  horrible, unmaintainable mess of a code base.”
+#
+
+#
+
+
+
