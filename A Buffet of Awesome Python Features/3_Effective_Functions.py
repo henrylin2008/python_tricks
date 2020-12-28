@@ -118,9 +118,16 @@ def foo(required, *args, **kwargs):
     if kwargs:
         print(kwargs)
 
-# *args will collect extra positional arguments as a tuple
-# **kwargs will collect extra keyword arguments as a dictionary
+# *args will collect extra positional arguments as a tuple because the parameter name has a * prefix.
+# **kwargs will collect extra keyword arguments as a dictionary because the parameter name has a ** prefix.
 #
+# Key Takeaways
+# -*args and **kwargs let you write functions with a variable number of arguments in Python.
+# -*args collects extra positional arguments as a tuple. **kwargs collects the extra keyword arguments as a dictionary.
+# -The actual syntax is * and **. Calling them args and kwargs is just a convention (and one you should stick to).
+#
+
+
 
 
 
