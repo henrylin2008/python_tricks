@@ -146,3 +146,17 @@ print_vector(*genexpr)
 # -The * and ** operators can be used to “unpack” function arguments from sequences and dictionaries.
 # -Using argument unpacking effectively can help you write more flexible interfaces for your modules and functions.
 #
+
+# 3.6 Nothing to Return Here
+# If a function doesn’t specify a return value, it returns None by default. This means you
+# can replace return None statements with bare return statements or even leave them out completely and still get the
+# same result
+#
+# Key Takeaways
+# -If a function doesn’t specify a return value, it returns None. Whether to explicitly return None is a stylistic
+# decision.
+# -This is a core Python feature but your code might communicate its intent more clearly with an explicit return None
+# statement.
+
+
+
