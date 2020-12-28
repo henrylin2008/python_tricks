@@ -89,11 +89,15 @@ def null_decorator(func):
 @null_decorator
 def greet():
     return 'Hello!'
+
+
 # Putting an @null_decorator line in front of the function definition is the same as defining the function first and
 # then running through the decorator.
 
 
 greet()
+
+
 # 'Hello!'
 
 # Key Takeaways:
@@ -118,6 +122,7 @@ def foo(required, *args, **kwargs):
     if kwargs:
         print(kwargs)
 
+
 # *args will collect extra positional arguments as a tuple because the parameter name has a * prefix.
 # **kwargs will collect extra keyword arguments as a dictionary because the parameter name has a ** prefix.
 #
@@ -127,7 +132,17 @@ def foo(required, *args, **kwargs):
 # -The actual syntax is * and **. Calling them args and kwargs is just a convention (and one you should stick to).
 #
 
+# 3.5 Function Argument Unpacking
+def print_vector(x, y, z):
+    print('<%s, %s, %s>' % (x, y, z))
 
 
+genexpr = (x * x for x in range(3))
+print_vector(*genexpr)
+# Putting a * before an iterable in a function call will unpack it and pass its elements as separate positional
+# arguments to the called function.
 
-
+# Key Takeaways
+# -The * and ** operators can be used to “unpack” function arguments from sequences and dictionaries.
+# -Using argument unpacking effectively can help you write more flexible interfaces for your modules and functions.
+#
