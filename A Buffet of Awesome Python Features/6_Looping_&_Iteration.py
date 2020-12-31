@@ -47,3 +47,12 @@ for i in range(a, n, s):    # a: start, n: stop, s: step
 { x: x * x for x in range(5) }
 # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
 
+# Key Takeaways:
+# -Comprehensions are a key feature in Python. Understanding and applying them will make your code much more Pythonic.
+# -Comprehensions are just fancy syntactic sugar for a simple for-loop pattern. Once you understand the pattern, you’ll
+#  develop an intuitive understanding for comprehensions.
+# -There are more than just list comprehensions.
+#
+
+
+
