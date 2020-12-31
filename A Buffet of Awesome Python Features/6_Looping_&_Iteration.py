@@ -64,6 +64,8 @@ lst[::2]
 lst[::-1]   # same as list.reverse() or reversed() to reverse a list
 # [5,4,3,2,1]
 
+# You can use the :-operator to clear all elements from a list without destroying the list object itself.
+
 del lst[:]  # same as lst.clear() (available in Python 3)
 lst
 # []
@@ -73,6 +75,20 @@ lst
 #  clear, reverse, and copy lists.
 # -But be careful—this functionality borders on the arcane for many Python developers. Using it might make your code
 #  less maintainable for everyone else on your team.
+#
+
+# 6.4 Beautiful Iterators
+
+# Iterators use exceptions to structure control flow. To signal the end of iteration, a Python iterator simply raises
+# the built-in StopIteration exception.
+
+# Key Takeaways
+# -Iterators provide a sequence interface to Python objects that’s memory efficient and considered Pythonic. Behold the
+#  beauty of the for-in loop!
+# -To support iteration an object needs to implement the iterator protocol by providing the __iter__ and __next__ dunder
+#  methods.
+# -Class-based iterators are only one way to write iterable objects in Python. Also consider generators and generator
+#  expressions.
 #
 
 
