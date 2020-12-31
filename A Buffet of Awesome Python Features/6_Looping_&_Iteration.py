@@ -32,3 +32,7 @@ for i in range(a, n, s):    # a: start, n: stop, s: step
 #
 #
 
+# 6.2 Comprehending Comprehensions
+# List Comprehensions is that they’re just for-loops over a collection but expressed in a more terse and compact syntax.
+# values = [expression for item in collection]
+#
