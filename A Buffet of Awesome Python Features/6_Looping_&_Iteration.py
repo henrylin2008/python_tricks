@@ -54,5 +54,25 @@ for i in range(a, n, s):    # a: start, n: stop, s: step
 # -There are more than just list comprehensions.
 #
 
+# 6.3 List Slicing Tricks and the Sushi Operator
+# Syntax: [start:stop:step]
+# step defaults to one (if it's not included)
+# stride: (ex: sublist every other element of the list:
+lst = [1,2,3,4,5]
+lst[::2]
+# [1,3,5]
+lst[::-1]   # same as list.reverse() or reversed() to reverse a list
+# [5,4,3,2,1]
+
+del lst[:]  # same as lst.clear() (available in Python 3)
+lst
+# []
+
+# Key Takeaways
+# -The : “sushi operator” is not only useful for selecting sublists of elements within a list. It can also be used to
+#  clear, reverse, and copy lists.
+# -But be careful—this functionality borders on the arcane for many Python developers. Using it might make your code
+#  less maintainable for everyone else on your team.
+#
 
 
