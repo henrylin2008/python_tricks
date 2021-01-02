@@ -89,6 +89,11 @@ lst
 #  methods.
 # -Class-based iterators are only one way to write iterable objects in Python. Also consider generators and generator
 #  expressions.
-#
 
+# 6.5 Generators Are Simplified Iterators
+def repeater(value):
+    while True:
+        yield value
+# Yield returns a generator object to the caller, and the execution of the code starts only when the generator is
+# iterated.
 
