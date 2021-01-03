@@ -313,46 +313,49 @@ c
 c.update(d)  # adding c and d
 c
 # Counter({'a': 4, 'b': 3, 'c': 2, 'd': 0})
-c.clear()   # clear out c
+c.clear()  # clear out c
 c
 # Counter()
 
 c = Counter(a=4, b=3, c=2, d=0)
-d = Counter(['a','b','b','c','c'])
-c + d   # sum up c and d, item with 0 not showing
+d = Counter(['a', 'b', 'b', 'c', 'c'])
+c + d  # sum up c and d, item with 0 not showing
 # Counter({'a': 5, 'b': 5, 'c': 4})
-c - d   # subtract d from c
+c - d  # subtract d from c
 # Counter({'a': 3, 'b': 1})
-c & d   # intersection of c & d, minimum item from both lists
+c & d  # intersection of c & d, minimum item from both lists
 # Counter({'b': 2, 'c': 2, 'a': 1})
-c | d   # union of c & d, max item from both list
+c | d  # union of c & d, max item from both list
 # Counter({'a': 4, 'b': 3, 'c': 2})
 
 
 # collections deque
 from collections import deque
+
 d = deque('hello')
-d.append(4)   # deque(['h', 'e', 'l', 'l', 'o', 4])
-d.appendleft(5)     # deque([5, 'h', 'e', 'l', 'l', 'o', 4])
-d.pop()     # deque([5, 'h', 'e', 'l', 'l', 'o'])
-d.popleft()     # deque(['h', 'e', 'l', 'l', 'o'])
-d.clear()      # empty the deque object, deque([])
-d.extend('456')     # add all of the items  from the passed iterabale data type or collection to the end of the deque
-                    # to the end of the deque. deque(['4', '5', '6'])
-d.extend('hello')   # deque(['4', '5', '6', 'h', 'e', 'l', 'l', 'o'])
+d.append(4)  # deque(['h', 'e', 'l', 'l', 'o', 4])
+d.appendleft(5)  # deque([5, 'h', 'e', 'l', 'l', 'o', 4])
+d.pop()  # deque([5, 'h', 'e', 'l', 'l', 'o'])
+d.popleft()  # deque(['h', 'e', 'l', 'l', 'o'])
+d.clear()  # empty the deque object, deque([])
+d.extend('456')  # add all of the items  from the passed iterable data type or collection to the end of the deque
+# to the end of the deque. deque(['4', '5', '6'])
+d.extend('hello')  # deque(['4', '5', '6', 'h', 'e', 'l', 'l', 'o'])
 d.extendleft('19')  # deque(['9', '1', '4', '5', '6', 'h', 'e', 'l', 'l', 'o'])
 d = deque("hello")  # rotate the deck by that many positions. Takes and iterable
 d.rotate(1)
-print(d) # prints deque(["o", "h", "e", "l", "l"])
+print(d)  # prints deque(["o", "h", "e", "l", "l"])
 d.rotate(-2)
 print(d)  # prints deque(["e", "l", "l", "o", "h"])
 
 # timeit.timeit
 import timeit
+
 timeit.timeit('"-".join(str(n) for n in range(100))',
-                  number=10000)
+              number=10000)
 
 0.3412662749997253
+
 
 # timeit.timeit(stmt, setup, timer, number)
 # stmt - which is the statement you want to measure; it defaults to ‘pass’.
@@ -360,3 +363,19 @@ timeit.timeit('"-".join(str(n) for n in range(100))',
 #         We generally use this to import the required modules for our code.
 # timer - which is a timeit.Timer object; it usually has a sensible default value so you don’t have to worry about it.
 # number - which is the number of executions you’d like to run the stmt.
+
+
+# Functions are first-class citizens in Python:
+# They can be passed as arguments to other functions,
+# returned as values from other functions, and
+# assigned to variables and stored in data structures.
+
+def myfunc(a, b):
+    return a + b
+
+
+funcs = [myfunc]
+funcs[0]
+# <function myfunc at 0x107012230>
+funcs[0](2, 3)
+# 5
