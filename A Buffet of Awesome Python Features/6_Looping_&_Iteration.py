@@ -96,4 +96,16 @@ def repeater(value):
         yield value
 # Yield returns a generator object to the caller, and the execution of the code starts only when the generator is
 # iterated.
+# Whereas a return statement disposes of a function’s local state, a yield statement suspends the function and retains
+# its local state.
+#
+# Key Takeaways
+# -Generator functions are syntactic sugar for writing objects that support the iterator protocol. Generators abstract
+#  away much of the boilerplate code needed when writing class-based iterators.
+# -The yield statement allows you to temporarily suspend execution of a generator function and to pass back values from
+#  it.
+# -Generators start raising StopIteration exceptions after control flow leaves the generator function by any means other
+#  than a yield statement.
+#
+
 
