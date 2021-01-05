@@ -108,4 +108,39 @@ def repeater(value):
 #  than a yield statement.
 #
 
+# 6.6 Generator Expressions
+# Generator expressions give you an even more effective shortcut for writing iterators. With a simple and concise syntax
+# that looks like a list comprehension, you’ll be able to define iterators in a single line of code.
+#
+iterator = ('Hello' for i in range(3))
+for x in iterator:
+    print(x)
+# 'Hello'
+# 'Hello'
+# 'Hello'
+
+list(iterator)
+# ['Hello', 'Hello', 'Hello']
+
+# Syntax
+# genexpr = (expression for item in collection
+#            if condition)
+
+# The parentheses surrounding a generator expression can be dropped if the generator expression is used as the single
+# argument to a function:
+sum(x * 2 for x in range(10))
+# 90
+# generator expressions generate values “just in time” like a class-based iterator or a generator function would, they
+# are very memory efficient.
+#
+
+# Key Takeaways
+# -Generator expressions are similar to list comprehensions. However, they don’t construct list objects. Instead,
+#  generator expressions generate values “just in time” like a class-based iterator or generator function would.
+# -Once a generator expression has been consumed, it can’t be restarted or reused.
+# -Generator expressions are best for implementing simple “ad hoc” iterators. For complex iterators, it’s better to write a generator function or a class-based iterator.
+#
+
+
+
 
