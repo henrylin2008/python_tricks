@@ -141,6 +141,45 @@ sum(x * 2 for x in range(10))
 # -Generator expressions are best for implementing simple “ad hoc” iterators. For complex iterators, it’s better to write a generator function or a class-based iterator.
 #
 
+# 6.7 Iterator Chains
+# By chaining together multiple iterators you can write highly efficient data processing “pipelines.”
+#
+def integers():
+    for i in range(1, 9):
+        yield i
 
+def squared(seq):
+    for i in seq:
+        yield i * i
 
+chain = squared(integers())
+list(chain)
+# [1, 4, 9, 16, 25, 36, 49, 64]
+#
+def negated(seq):
+    for i in seq:
+        yield -i
+
+chain = negated(squared(integers()))
+list(chain)
+# [-1, -4, -9, -16, -25, -36, -49, -64]
+
+# using Generator Expression
+integers = range(8)
+squared = (i * i for i in integers)
+negated = (-i for i in squared)
+
+negated
+# <generator object <genexpr> at 0x1098bcb48>
+list(negated)
+# [0, -1, -4, -9, -16, -25, -36, -49]
+
+# The only downside to using generator expressions is that they can’t be configured with function arguments, and you
+# can’t reuse the same generator expression multiple times in the same processing pipeline.
+
+# Key Takeaways
+# -Generators can be chained together to form highly efficient and maintainable data processing pipelines.
+# -Chained generators process each element going through the chain individually.
+# -Generator expressions can be used to write concise pipeline definitions, but this can impact readability.
+#
 
