@@ -49,3 +49,16 @@ assert_stmt ::= "assert" expression1 ["," expression2]
 # -Asserts should only be used to help developers identify bugs. They’re not a mechanism for handling run-time errors.
 # -Asserts can be globally disabled with an interpreter setting.
 #
+# 2.2 Complacent Comma Placement
+# you can place a comma after every item in a list, dict, or set constant, including the last item.
+#
+names = [
+    'Alice',
+    'Bob',
+    'Dilbert',
+]
+# Key Takeaways
+# -Smart formatting and comma placement can make your list, dict, or set constants easier to maintain.
+# -Python’s string literal concatenation feature can work to your benefit, or introduce hard-to-catch bugs.
+#
+
