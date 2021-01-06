@@ -110,3 +110,31 @@ _internal_func()
 # covers things like __init__ for object constructors, or __call__ to make objects callable.
 # These dunder methods are often referred to as magic methods—
 #
+
+# 5. Single Underscore: "_"
+# Per convention, a single stand-alone underscore is sometimes used as a name to indicate that a variable is temporary
+# or insignificant.
+# This is handy if you’re working in an interpreter session and you’d like to access the result of a previous calculation:
+20 + 3
+# 23
+_
+# 23
+print(_)
+# 23
+
+# Key Takeaways
+#-Single Leading Underscore “_var”: Naming convention indicating a name is meant for internal use. A hint for
+#  programmers and not enforced by the interpreter (except in wildcard imports.)
+#-Single Trailing Underscore “var_”: Used by convention to avoid naming conflicts with Python keywords.
+#-Double Leading Underscore “__var”: Triggers name mangling when used in a class context. Enforced by the Python
+#  interpreter.
+#-Double Leading and Trailing Underscore “__var__”: Indicates special methods defined by the Python language. Avoid
+#  this naming scheme for your own attributes.
+#-Single Underscore “_”: Sometimes used as a name for temporary or insignificant variables (“don’t care”). Also, it
+#  represents the result of the last expression in a Python REPL session.
+
+
+
+
+
+
