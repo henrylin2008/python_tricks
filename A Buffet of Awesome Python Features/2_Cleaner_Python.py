@@ -75,3 +75,24 @@ with open('hello.txt', 'w') as f:
 #  the with statement and released automatically when execution leaves the with context.
 # -Using with effectively can help you avoid resource leaks and make your code easier to read.
 #
+
+# 2.4 Underscores, Dunders, and More
+# 1. Single Leading Underscore:"_var"
+# The underscore prefix is meant as a hint to tell another programmer that a variable or method starting with a single
+# underscore is intended for internal use.
+# if you use a wildcard import to import all the names from the module, Python will not import names with a leading
+# underscore
+# my_module.py:
+def external_func():
+    return 23
+
+def _internal_func():
+    return 42
+
+from my_module import *
+external_func()
+# 23
+_internal_func()
+# NameError: "name '_internal_func' is not defined"
+
+# 2. Single Trailing Underscore: "var_"
