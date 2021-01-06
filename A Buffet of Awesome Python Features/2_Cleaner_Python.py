@@ -133,8 +133,37 @@ print(_)
 #-Single Underscore “_”: Sometimes used as a name for temporary or insignificant variables (“don’t care”). Also, it
 #  represents the result of the last expression in a Python REPL session.
 
+# 2.5 A Shocking Truth about String Formatting
+errno = 50159747054
+name = 'Bob'
+# 1-"Old Style" String Formatting
+# Strings in Python have a unique built-in operation that can be accessed with the %-operator.
+'Hello, %s' %name
+# 'Hello, Bob'
+'%x' % errno    # convert numbers to hexadecimal
+# 'badc0ffee'
+'Hey %s, there is a 0x%x error!' % (name, errno)
+# 'Hey Bob, there is a 0xbadc0ffee error!'
+'Hey %(name)s, there is a 0x%(errno)x error!' % { "name": name, "errno": errno }
+# 'Hey Bob, there is a 0xbadc0ffee error!'
 
+# 2-"New Style" String Formatting
+# In Python 3, You can use the format() function to do simple positional formatting,
+'Hello, {}'.format(name)
+# 'Hello, Bob'
 
+'Hey {name}, there is a 0x{errno:x} error!'.format(name=name, errno=errno)
+# 'Hey Bob, there is a 0xbadc0ffee error!'
 
+# 3-Literal String Interpolation (Python 3.6+)
+# Python 3.6 adds yet another way to format strings, called Formatted String Literals. This new way of formatting
+# strings lets you use embedded Python expressions inside string constants.
+f'Hello, {name}!'
+# 'Hello, Bob!'
+# you can embed arbitrary Python expressions, you can even do inline arithmetic with it,
+a = 5
+b = 10
+f'Five plus ten is {a + b} and not {2 * (a + b)}.'
+# 'Five plus ten is 15 and not 30.'
 
 
