@@ -62,3 +62,16 @@ names = [
 # -Python’s string literal concatenation feature can work to your benefit, or introduce hard-to-catch bugs.
 #
 
+# 2.3 Context Managers and the with Statement
+# Opening files using the with statement is generally recommended because it ensures that open file descriptors are
+# closed automatically after program execution leaves the context of the with statement.
+#
+with open('hello.txt', 'w') as f:
+    f.write('hello, world!')
+# Key Takeaways
+# -The with statement simplifies exception handling by encapsulating standard uses of try/finally statements in
+#  so-called context managers.
+# -Most commonly it is used to manage the safe acquisition and release of system resources. Resources are acquired by
+#  the with statement and released automatically when execution leaves the with context.
+# -Using with effectively can help you avoid resource leaks and make your code easier to read.
+#
