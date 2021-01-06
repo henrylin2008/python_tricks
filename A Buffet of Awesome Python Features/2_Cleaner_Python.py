@@ -166,4 +166,24 @@ b = 10
 f'Five plus ten is {a + b} and not {2 * (a + b)}.'
 # 'Five plus ten is 15 and not 30.'
 
+# 4-Template Strings
+from string import Template
+t = Template('Hey, $name!')
+t.substitute(name=name)
+# 'Hey, Bob!'
+templ_string = 'Hey $name, there is a $error error!'
+Template(templ_string).substitute(name=name, error=hex(errno))  #transform int error number into a hex-string
+# 'Hey Bob, there is a 0xbadc0ffee error!'
+
+# Rule of Thumb:
+# If your format strings are user-supplied, use Template Strings to avoid security issues. Otherwise, use Literal String
+# Interpolation if you’re on Python 3.6+, and “New Style” String Formatting if you’re not.
+
+# Key Takeaways
+# -Perhaps surprisingly, there’s more than one way to handle string formatting in Python.
+# -Each Method has its individual pros and cons. Your use case will influence which method you should use.
+
+
+
+
 
