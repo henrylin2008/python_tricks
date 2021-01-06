@@ -96,3 +96,17 @@ _internal_func()
 # NameError: "name '_internal_func' is not defined"
 
 # 2. Single Trailing Underscore: "var_"
+# In summary, a single trailing underscore (postfix) is used by convention to avoid naming conflicts with Python
+# keywords.
+#
+
+# 3. Double Leading Underscore: "__var"
+# A double underscore prefix causes the Python interpreter to rewrite the attribute name in order to avoid naming
+# conflicts in subclasses.
+#
+
+# 4. Double leading and trailing underscore: "__var__"
+# names that have both leading and trailing double underscores are reserved for special use in the language. This rule
+# covers things like __init__ for object constructors, or __call__ to make objects callable.
+# These dunder methods are often referred to as magic methods—
+#
