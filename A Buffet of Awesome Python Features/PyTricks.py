@@ -415,3 +415,8 @@ dispatch_if('unknown', 2, 8)
 
 dispatch_dict('unknown', 2, 8)
 # None
+
+
+# True == 1 == 1.0, thus the value of the key overwritten previous value
+{True: 'yes', 1: 'no', 1.0: 'maybe'}
+# {True: 'maybe'}
