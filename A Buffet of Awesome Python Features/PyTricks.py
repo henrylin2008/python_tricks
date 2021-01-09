@@ -420,3 +420,7 @@ dispatch_dict('unknown', 2, 8)
 # True == 1 == 1.0, thus the value of the key overwritten previous value
 {True: 'yes', 1: 'no', 1.0: 'maybe'}
 # {True: 'maybe'}
+
+
+# You can send a copy of a list to a function like this:
+function_name(list_name[:])
