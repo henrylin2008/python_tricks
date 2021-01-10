@@ -378,6 +378,8 @@ funcs = [myfunc]
 funcs[0]
 # <function myfunc at 0x107012230>
 funcs[0](2, 3)
+
+
 # 5
 
 # Because Python has first-class functions they can
@@ -424,3 +426,19 @@ dispatch_dict('unknown', 2, 8)
 
 # You can send a copy of a list to a function like this:
 function_name(list_name[:])
+
+# sort(): sorting a list permanently
+cars = ['bmw', 'audi', 'toyota', 'subaru']
+cars.sort()  # changes the order of the list permanently
+print(cars)     # ['audi', 'bmw', 'subaru', 'toyota']
+cars.sort(reverse=True)
+cars    # ['toyota', 'subaru', 'bmw', 'audi']
+
+# sorted(): sorting a list temporarily
+# The sorted() function lets you display your list in a particular order but doesn’t affect the actual order of the
+# list.
+cars = ['bmw', 'audi', 'toyota', 'subaru']
+print(cars)  # ['bmw', 'audi', 'toyota', 'subaru']
+print(sorted(cars))  # ['audi', 'bmw', 'subaru', 'toyota']
+print(cars)  # ['bmw', 'audi', 'toyota', 'subaru']
+sorted(cars, reverse=True)     # ['toyota', 'subaru', 'bmw', 'audi']
