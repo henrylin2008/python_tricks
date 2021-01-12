@@ -456,3 +456,9 @@ $ python -m SimpleHTTPServer 8000
 
 # (This will serve the current directory at
 #  http://localhost:8000)
+
+# regular string with a escaped character
+s1 = 'a\tb' # a     b
+
+# A raw string \t it not escaped and will appear as is
+s2 = r'a\tb'  # 'a\tb
