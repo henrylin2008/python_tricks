@@ -462,3 +462,9 @@ s1 = 'a\tb' # a     b
 
 # A raw string \t it not escaped and will appear as is
 s2 = r'a\tb'  # 'a\tb
+
+set1 = {1,2,3,6,7,8}
+set2 = {1,3,3,5,6,7,6}
+d1 = set1.difference(set2)  # sort of set1 - set2
+# {8, 2}
+d2 = set2.difference(set1) # {5}
