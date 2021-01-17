@@ -19,3 +19,31 @@ msg = "Subject: " + subject + '\n' + message
 smtp_object.sendmail(from_address, to_address, msg)
 
 smtp_object.quit()  # Close the session
+
+
+# Viewing Emails:
+# import imaplib
+# M = imaplib.IMAP4_SSL('imap.gmail.com')
+# import getpass
+# email = input("Email: ")  # getpass.getpass("Email: ")
+# password = getpass.getpass("Password: ")
+# M.login(email.password)
+# M.list()  # list of email folders
+# M.select('inbox') # ('OK', [b'23432'])
+# ## Keywords:
+# # 'BEFORE date', 'ON date', 'SINCE date', 'FROM some_string', 'TO some_string',
+# # 'CC some_string' and/or 'BCC some_string', 'SUBJECT string', 'BODY string', 'TEXT "string with spaces"
+# # 'SEEN', 'UNSEEN', 'ANSWERED', 'UNANSWERED', 'DELETED', 'UNDELETED'
+# type, data = M.search(None, 'BEFORE 01-NOV-2011') # USE keywords above
+# type, data = M.search(None, 'FROM user@email.com') # USE keywords above
+# type, data = M.search(None, 'SUBJECT "subject/title"') # USE keywords above
+# email_id = data[0]
+# result, email_data = M.fetch(email_id, '(RFC822)')
+# raw_email = email_data[0][1]
+# raw_email_string = raw_email.decode('utf-8')
+# import email
+# email_message = email.message_from_string(raw_email_string
+# for part in email_message.walk():
+#     if part.get_content_type() == 'text/plain':   # or 'text/html'
+#        body = part.get_payload(decode=True)
+#        print(body)
