@@ -58,11 +58,20 @@ print('d2:', d2)  # d2: 1990-03-11
 
 # Arithmetic
 # We can perform arithmetic on date objects to check for time differences. For example:
-d1
-datetime.date(2015, 3, 11)
-d2
-datetime.date(1990, 3, 11)
-d1 - d2
-datetime.timedelta(9131)
+d1  # datetime.date(2015, 3, 11)
+d2  # datetime.date(1990, 3, 11)
+d1 - d2     # datetime.timedelta(9131)
 # This give us the difference in days between the two dates. You can use the timedelta method to specify various
 # units of times (day,minutes,hours,etc...)
+result = d1 - d2
+print(result) # 9131 days, 0:00:00
+result.days     # 9131
+
+
+dt1 = datetime.datetime(2021, 11, 3, 22, 0)     # 2021-11-03 22:00:00
+dt2 = datetime.datetime(2020, 11, 3, 12, 0)     # 2020-11-03 12:00:00
+dt1 - dt2       # datetime.timedelta(days=365, seconds=36000)
+3600/60/60      # 10 hours
+diff = dt1 - dt2
+diff.seconds    # 36000
+diff.total_seconds()    # 31572000.0; total seconds = 36000 seconds + 365 days in seconds
