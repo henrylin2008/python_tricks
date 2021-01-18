@@ -149,3 +149,33 @@ print("t3 =", abs(t3))  # t3 = 0:00:21
 
 t = timedelta(days=5, hours=1, seconds=33, microseconds=233423)
 print("total seconds =", t.total_seconds())  # total seconds = 435633.233423
+
+
+# Format Datetime
+
+# strftime() creates a formatted string from a given date, datetime, or time object
+now = datetime.now()    # 2021-01-18 11:14:00.271193
+t = now.strftime("%m/%d/%Y, %H:%M:%S")  # 01/18/2021, 11:14:00
+# -%Y - year [0001,..., 2018, 2019,..., 9999]
+# -%m - month [01, 02, ..., 11, 12]
+# -%d - day [01, 02, ..., 30, 31]
+# -%H - hour [00, 01, ..., 22, 23
+# -%M - minute [00, 01, ..., 58, 59]
+# -%S - second [00, 01, ..., 58, 59]
+
+
+# The strptime() method creates a datetime object from a given string (representing date and time).
+date_string = "21 June, 2018, 10:30:00"     # 21 June, 2018, 10:30:00
+date_object = datetime.strptime(date_string, "%d %B, %Y, %H:%M:%S")
+# %d, %B and %Y format codes are used for day, month(full name) and year respectively.
+print(date_object)  # 2018-06-21 10:30:00
+
+
+# Timezone
+# use 3rd-party pytZ module
+import pytz
+
+tz_Pacific = pytz.timezone('US/Pacific')    # pytz time zones
+# https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568
+datetime_Pacific = datetime.now(tz_Pacific)     # 2021-01-18 11:57:06.890240-08:00
+print(datetime_Pacific.strftime("%m/%d/%Y, %H:%M:%S"))  # 01/18/2021, 11:57:06
