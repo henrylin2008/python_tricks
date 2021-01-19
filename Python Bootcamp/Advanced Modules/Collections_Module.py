@@ -196,3 +196,22 @@ sam[0]
 
 frank[2]
 # Frankie
+
+
+# ChainMap
+# Python contains a container called “ChainMap” which encapsulates many dictionaries into one unit.
+# -keys() :- This function is used to display all the keys of all the dictionaries in ChainMap.
+# -values() :- This function is used to display values of all the dictionaries in ChainMap.
+# -maps() :- This function is used to display keys with corresponding values of all the dictionaries in ChainMap.
+import collections
+dic1 = { 'a' : 1, 'b' : 2 }
+dic2 = { 'b' : 3, 'c' : 4 }
+chain = collections.ChainMap(dic1, dic2)
+print(chain.maps)   # [{'b': 2, 'a': 1}, {'c': 4, 'b': 3}]
+print(list(chain.keys()))   # ['a', 'c', 'b']
+print(list(chain.values())) # [1, 4, 2]
+
+dic3 = { 'f' : 5 }
+# -new_child() :- This function adds a new dictionary in the beginning of the ChainMap.
+chain1 = chain.new_child(dic3)
+print (chain1.maps)   # [{'f': 5}, {'b': 2, 'a': 1}, {'b': 3, 'c': 4}]
