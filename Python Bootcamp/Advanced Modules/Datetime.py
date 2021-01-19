@@ -81,6 +81,9 @@ import datetime
 now = datetime.datetime.now()  # get current local date and time
 print(now)  # 2021-01-18 10:39:29.835696
 
+current_time = datetime.datetime.now().time()
+# 10:39:29.835696
+
 today = datetime.date.today()  # get current date
 print(today)  # 2021-10-18
 
@@ -151,25 +154,109 @@ t = timedelta(days=5, hours=1, seconds=33, microseconds=233423)
 print("total seconds =", t.total_seconds())  # total seconds = 435633.233423
 
 
+# Time module
+import time
+
+t = time.localtime()
+current_time = time.strftime("%H:%M:%S", t)
+print(current_time) # 07:46:58
+
+# time.sleep(): suspends/delays execution of the current thread for given # of seconds
+print("This is printed immediately.")
+time.sleep(2.4)
+print("This is printed after 2.4 seconds.")
+
+named_tuple = time.localtime() # get struct_time
+time_string = time.strftime("%m/%d/%Y, %H:%M:%S", named_tuple)
+
+print(time_string)  # 12/28/2018, 09:47:41
+
+
 # Format Datetime
 
 # strftime() creates a formatted string from a given date, datetime, or time object
 now = datetime.now()    # 2021-01-18 11:14:00.271193
 t = now.strftime("%m/%d/%Y, %H:%M:%S")  # 01/18/2021, 11:14:00
-# -%Y - year [0001,..., 2018, 2019,..., 9999]
-# -%m - month [01, 02, ..., 11, 12]
-# -%d - day [01, 02, ..., 30, 31]
-# -%H - hour [00, 01, ..., 22, 23
-# -%M - minute [00, 01, ..., 58, 59]
-# -%S - second [00, 01, ..., 58, 59]
+# %Y  - year as a decimal num [0001,..., 2018, 2019,..., 9999]
+# %m  - month as a zero-padded decimal number [01, 02, ..., 11, 12]
+# %d  - day as a zero-padded decimal [01, 02, ..., 30, 31]
+# %H  - hour as a zero-padded decimal [00, 01, ..., 22, 23]
+# %M  - minute [00, 01,     ..., 58, 59]
+# %S  - second [00, 01, ..., 58, 59]
+# %a  - abbreviated weekday name [Sun,Mon,...]
+# %A  - Full weekday name [Sunday, Monday, ..]
+# %w  - weekday as a decimal number [0,1,..,6]
+# %-d - day as a decimal number [1,2,.....,30]
+# %b  - Abbreviated month name  [Jan,Feb,..,Dec]
+# %B  - Full month name [January, February,..]
+# %-m - Month as a decimal number [1,2,...,12]
+# %y  - Year as a zero-padded decimal number [00,01,...99]
+# %-H - Hour (24-hour) as a decimal number [0,1,...23]
+# %I  - Hour (12-hour) as a zero-padded decimal number [01,02...12]
+# %-I - Hour (12-hour) as a decimal num [1,2,...12]
+# %p  -	Locale’s AM or PM.	[AM, PM]
+# %M  - Minute as a zero-padded decimal number.	[00, 01, ..., 59]
+# %-M - Minute as a decimal number.	[0, 1, ..., 59]
+# %S  - Second as a zero-padded decimal number.	[00, 01, ..., 59]
+# %-S - Second as a decimal number.	[0, 1, ..., 59]
+# %f  - Microsecond as a decimal number, zero-padded on the left.	[000000 - 999999]
+# %z  - UTC offset in the form +HHMM or -HHMM.
+# %Z  -	Time zone name.
+# %j  -	Day of the year as a zero-padded decimal number. [001, 002, ..., 366]
+# %-j -	Day of the year as a decimal number.	[1, 2, ..., 366]
+# %U  -	Week number of the year (Sunday as the first day of the week). All days in a new year preceding the first Sunday
+#       are considered to be in week 0.	[00, 01, ..., 53]
+# %W  - Week number of the year (Monday as the first day of the week). All days in a new year preceding the first Monday
+#       are considered to be in week 0.	[00, 01, ..., 53]
+# %c  -	Locale’s appropriate date and time representation.	[Mon Sep 30 07:06:05 2013]
+# %x  - Locale’s appropriate date representation.	[09/30/13]
+# %X  - Locale’s appropriate time representation.	[07:06:05]
+# %%  -	A literal '%' character.	[%]
+
 
 
 # The strptime() method creates a datetime object from a given string (representing date and time).
+# The strptime() class method takes two arguments:
+#   -string (that be converted to datetime)
+#   -format code
 date_string = "21 June, 2018, 10:30:00"     # 21 June, 2018, 10:30:00
 date_object = datetime.strptime(date_string, "%d %B, %Y, %H:%M:%S")
 # %d, %B and %Y format codes are used for day, month(full name) and year respectively.
 print(date_object)  # 2018-06-21 10:30:00
-
+# %a	Abbreviated weekday name.	Sun, Mon, ...
+# %A	Full weekday name.	Sunday, Monday, ...
+# %w	Weekday as a decimal number.	0, 1, ..., 6
+# %d	Day of the month as a zero-padded decimal.	01, 02, ..., 31
+# %-d	Day of the month as a decimal number.	1, 2, ..., 30
+# %b	Abbreviated month name.	Jan, Feb, ..., Dec
+# %B	Full month name.	January, February, ...
+# %m	Month as a zero-padded decimal number.	01, 02, ..., 12
+# %-m	Month as a decimal number.	1, 2, ..., 12
+# %y	Year without century as a zero-padded decimal number.	00, 01, ..., 99
+# %-y	Year without century as a decimal number.	0, 1, ..., 99
+# %Y	Year with century as a decimal number.	2013, 2019 etc.
+# %H	Hour (24-hour clock) as a zero-padded decimal number.	00, 01, ..., 23
+# %-H	Hour (24-hour clock) as a decimal number.	0, 1, ..., 23
+# %I	Hour (12-hour clock) as a zero-padded decimal number.	01, 02, ..., 12
+# %-I	Hour (12-hour clock) as a decimal number.	1, 2, ... 12
+# %p	Locale’s AM or PM.	AM, PM
+# %M	Minute as a zero-padded decimal number.	00, 01, ..., 59
+# %-M	Minute as a decimal number.	0, 1, ..., 59
+# %S	Second as a zero-padded decimal number.	00, 01, ..., 59
+# %-S	Second as a decimal number.	0, 1, ..., 59
+# %f	Microsecond as a decimal number, zero-padded on the left.	000000 - 999999
+# %z	UTC offset in the form +HHMM or -HHMM.
+# %Z	Time zone name.
+# %j	Day of the year as a zero-padded decimal number.	001, 002, ..., 366
+# %-j	Day of the year as a decimal number.	1, 2, ..., 366
+# %U	Week number of the year (Sunday as the first day of the week). All days in a new year preceding the first Sunday
+#       are considered to be in week 0.	00, 01, ..., 53
+# %W	Week number of the year (Monday as the first day of the week). All days in a new year preceding the first Monday
+#       are considered to be in week 0.	00, 01, ..., 53
+# %c	Locale’s appropriate date and time representation.	Mon Sep 30 07:06:05 2013
+# %x	Locale’s appropriate date representation.	09/30/13
+# %X	Locale’s appropriate time representation.	07:06:05
+# %%	A literal '%' character.	%
 
 # Timezone
 # use 3rd-party pytZ module
