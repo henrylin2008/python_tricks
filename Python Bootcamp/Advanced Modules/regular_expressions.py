@@ -55,3 +55,54 @@ results.group(1)    # '408'
 results.group(2)    # '555'
 results.group(3)    # '1234'
 results.groups()    # ('408', '555', '1234')
+
+
+# Additional Regex Syntax
+# |: or, find 1st match of 'man' or 'woman'
+re.search(r"man|woman", "This man was here.")   # re.Match object; span=(5, 8), match='man'>
+
+# .: one; ..: two, ...: three
+re.findall(r".at", "The cat in the hat sat here.")  # ['cat', 'hat', 'sat']
+
+# One or more non-whitespace that ends with 'at'
+re.findall(r'\S+at', "The bat went splat")  # ['bat', 'splat']
+
+# Starts with and Ends With
+# We can use the ^** to signal starts with, and the **$ to signal ends with:
+# check first item in text is a number
+re.findall(r'^\d', '1 is a number')    # ['1']
+
+# last item in text is a digit/number
+re.findall(r'\d$', '1 is a number 2')   # ['2']
+
+
+# Exclusion
+# To exclude characters, we can use the ^** symbol in conjunction with a set of brackets **[]. Anything inside the
+# brackets is excluded. For example:
+phrase = "there are 3 numbers 34 inside 5 this sentence."
+pattern = r'[^\d]+' # excluding any digit/numbers
+re.findall(pattern, phrase) # ['there are ', ' numbers ', ' inside ', ' this sentence.']
+
+test_phrase = 'This is a string! But it has punctuation. How can we remove it?'
+re.findall(r'[^!.?]+', test_phrase)     # excluding any punctuation of !.?
+# ['This is a string', ' But it has punctuation', ' How can we remove it']
+clean = re.findall(r'[^!.? ]+', test_phrase)   # excluding !.? (and space)
+# ['This', 'is', 'a', 'string', 'But', 'it', 'has', 'punctuation', 'How', 'can', 'we', 'remove', 'it']
+' '.join(clean)
+# 'This is a string But it has punctuation How can we remove it'
+
+# Brackets for Grouping
+text = 'Only find the hypen-words in this sentence. But you do not know how long-ish they are'
+pattern = r'[\w]+-[\w]+'    # same as r'\w+-\w+' (without [])
+re.findall(pattern, text)   # ['hypen-words', 'long-ish']
+
+# Parenthesis for Multiple Options
+text = 'Hello, would you like some catfish?'
+texttwo = "Hello, would you like to take a catnap?"
+textthree = "Hello, have you seen this caterpillar?"
+re.search(r'cat(fish|nap|erpillar)', text)
+# <re.Match object; span=(27, 34), match='catfish'>
+re.search(r'cat(fish|nap|erpillar)', texttwo)
+# <re.Match object; span=(32, 38), match='catnap'>
+re.search(r'cat(fish|nap|erpillar)', textthree)
+# <re.Match object; span=(26, 37), match='caterpillar'>
