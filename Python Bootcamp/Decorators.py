@@ -51,7 +51,6 @@ print(globals().keys())
 
 # Note how s is there, the Global Variable we defined as a string:
 
-In [10]:
 globals()['s']  #'Global Variable'
 # Now lets run our function to check for any local variables in the func() (there shouldn't be any)
 
@@ -88,11 +87,10 @@ hello()
 
 greet()     # 'Hello Jose'
 
-
-
 # Functions within functions
 # Great! So we've seen how we can treat functions as objects, now lets see how we can define functions inside of other
 # functions:
+
 
 def hello(name='Jose'):
     print('The hello() function has been executed')
@@ -180,7 +178,6 @@ other(hello)
 # with writing our first decorator:
 
 
-
 # Creating a Decorator
 # In the previous example we actually manually created a Decorator. Here we will modify it to make its use case clear:
 
@@ -195,8 +192,10 @@ def new_decorator(func):
 
     return wrap_func
 
+
 def func_needs_decorator():
     print("This function is in need of a Decorator")
+
 
 func_needs_decorator()
 # This function is in need of a Decorator
@@ -213,6 +212,7 @@ func_needs_decorator()
 @new_decorator
 def func_needs_decorator():
     print("This function is in need of a Decorator")
+
 
 func_needs_decorator()
 # Code would be here, before executing the func
