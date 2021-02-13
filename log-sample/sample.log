@@ -1,0 +1,5 @@
+2021-02-13 11:06:43,809:__main__:Tried to divide by zero
+Traceback (most recent call last):
+  File "/Users/hlin/Documents/GitHub/python_tricks/log-sample.py", line 38, in divide
+    result = x / y
+ZeroDivisionError: division by zero
