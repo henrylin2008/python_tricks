@@ -4,10 +4,19 @@
 # echo $EDITOR: check the default editor the system is using
 # export EDITOR=nano: change default editor to nano
 
-# crontab - e * * * * * python ~/code/task/test.py: run every minute, run test.py
+# crontab - e 
+# * * * * * python ~/code/task/test.py: run every minute, run test.py
 # * * * * * ~/opt/conda/envs/py38/bin/python ~/code/task/fetch_github.py: run at every minute
 #         - ~/opt/conda/envs/py38/bin/python: py38 python environment
 #         - ~/code/task/fetch_github.py: run fetch_github.py
+
+# 30 * * * * command: it runs every 30 minutes
+# 0 0 * * 1 command: every Monday at midnight 
+# 0 0 1,15 * * command: midnight at 1st and 15th 
+# */10 * * * * command: every 10 minutes 
+# 0 0 */3 * * command: every 3 days 
+# 0 0-5 * * * command: every hour from midnight to 5 AM 
+# */30 9-17 * * 1-5 command: Monday-Friday, 9am-5pm, every 30 minutes 
 
 
 # fetch_github.py
