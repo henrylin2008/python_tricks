@@ -39,7 +39,7 @@ send2trash.send2trash('practice.txt')   # sending practice.txt file to the trash
 # folder and check to see if a file is in the directory, and then perhaps do something with that file. Usually
 # recursively walking through every file and folder in a directory would be quite tricky to program, but luckily the
 # os module has a direct method call for this called os.walk(). Let's explore how it works.
-file_path = '/Users/hlin/Documents/GitHub/python_tricks/Python Bootcamp'
+file_path = '/Python Bootcamp'
 for folder, sub_folders, files in os.walk(file_path):
 
     print("Currently looking at folder: " + folder)
