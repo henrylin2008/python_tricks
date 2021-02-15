@@ -87,3 +87,16 @@ print(counter[15])    # 0 for non-exist item in counter list
 most_common = counter.most_common(2)    # most 2 common items
 print(most_common)          # returns tuple: [(5, 4), (3, 4)]; (item, count)
 print(most_common[0][0])    # 5; most common item value
+
+
+# 7.Concatenate string with .join()
+list_strings = ["Hello", "my", "friend"]
+" ".join(list_strings)      # "Hello my friend"
+
+
+# 8. Merge dictionaries with {**d1, **d2} (3.5+)
+d1 = {"name": "Alex", "age": 25}
+d2 = {"name": "Alex", "city": "SF"}
+merged_dict = {**d1, **d2}
+print(merged_dict)      # {'name': 'Alex', 'age': 25, 'city': 'SF'}
+
