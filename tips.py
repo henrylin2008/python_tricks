@@ -13,11 +13,11 @@ data = [1, 2, -4, -3, 5, 3, -2, -8, -9, 10, 8, 9, 4, -5, -8, -4]
 #
 # enumerate:
 start_time2 = time.time()
-for idx, num in enumerate(data):    # better solution
+for idx, num in enumerate(data):  # better solution
     if num < 0:
         data[idx] = 0
 end_time2 = time.time() - start_time2
-print(end_time2)     # 4.29153e-06
+print(end_time2)  # 4.29153e-06
 #
 
 # 2. Use List Comprehensions instead of for raw loops
@@ -32,11 +32,21 @@ print(end_time2)     # 4.29153e-06
 
 # List Comprehension, better and faster
 start_time1 = time.time()
-squares2 = [i*i for i in range(100)]
+squares2 = [i * i for i in range(100)]
 # print(squares2)
 end_time1 = time.time() - start_time1
-print(end_time1)    # 1.09e-05
+print(end_time1)  # 1.09e-05
 
+# 3. Sort complex iterables with sorted()
 
-# 3.
+data = (3, 5, 1, 10, 9)
+sorted_data = sorted(data, reverse=True)
+print(sorted_data)  # [10, 9, 5, 3, 1]
 
+data1 = [{"name": "Max", "age": 6},
+         {"name": "Lisa", "age": 20},
+         {"name": "Ben", "age": 9}]
+
+sorted_data2 = sorted(data1, key=lambda x: x["age"])  # sorted with keyword
+print(sorted_data2)
+# [{'name': 'Max', 'age': 6}, {'name': 'Ben', 'age': 9}, {'name': 'Lisa', 'age': 20}]
