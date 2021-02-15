@@ -50,3 +50,40 @@ data1 = [{"name": "Max", "age": 6},
 sorted_data2 = sorted(data1, key=lambda x: x["age"])  # sorted with keyword
 print(sorted_data2)
 # [{'name': 'Max', 'age': 6}, {'name': 'Ben', 'age': 9}, {'name': 'Lisa', 'age': 20}]
+
+
+# 4.Save Memory with Generators: one item at a time
+import sys
+
+my_list = [i for i in range(10000)]
+print(sum(my_list))  # 49995000
+print(sys.getsizeof(my_list), "bytes")  # 87624 bytes
+
+my_gen = (i for i in range(10000))
+print(sum(my_gen))  # 49995000
+print(sys.getsizeof(my_gen), "bytes")  # 120 bytes (one item at a time)
+
+
+# 5. Default values in dictionaries with .get() and .setdefault()
+
+my_dict = {"item": "football", "price": 10.00}
+count = my_dict.get("count", 0)     # print default value 0; if 0 is not set, default value is None
+print(count)        # 0
+
+count = my_dict.setdefault("count", 0)      # add "count" with value 0 into my_dict
+print(count)    # 0
+print(my_dict)      # {'item': 'football', 'price': 10.0, 'count': 0}
+
+
+# 6. Count hashable objects with collections.Counter
+from collections import Counter
+
+my_list = [10, 10, 10, 5, 5, 5, 3, 2, 3, 4, 4, 5, 3, 2, 3, 4]
+counter = Counter(my_list)
+print(counter)   # Counter({5: 4, 3: 4, 10: 3, 4: 3, 2: 2}); sorted with most items in the front
+print(counter[5])     # 4
+print(counter[15])    # 0 for non-exist item in counter list
+
+most_common = counter.most_common(2)    # most 2 common items
+print(most_common)          # returns tuple: [(5, 4), (3, 4)]; (item, count)
+print(most_common[0][0])    # 5; most common item value
