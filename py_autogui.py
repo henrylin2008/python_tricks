@@ -19,15 +19,18 @@ print(pyautogui.position())
 # pyautogui.dragRel(xOffset, yOffset, duration=num_seconds)  # drag mouse relative to its current position
 pyautogui.click(348, 81, button='left')
 # pyautogui.click(x=moveToX, y=moveToY, clicks=num_of_clicks, interval=secs_between_clicks, button='left')
+# pyautogui.displayMousePosition()  # display Mouse position (X, Y) and RGB code (0, 0, 255)
+
 
 # Keyboard Functions
 pyautogui.typewrite('Hello World!\n')
 # pyautogui.typewrite('Hello world!\n', interval=secs_between_keys)  # useful for entering text, newline is Enter
 pyautogui.typewrite(['enter'])
 # pyautogui.typewrite(['a', 'b', 'c', 'left', 'backspace', 'enter', 'f1'], interval=secs_between_keys)
-
-# pyautogui.hotkey("command", "space")
+# pyautogui.KEYBOARD_KEYS   # list of available keyboard keys on the current OS
+# pyautogui.hotkey("command", "space")  # keyboard shortcuts
 # pyautogui.hotkey('ctrl', 'c')  # ctrl-c to copy
 # pyautogui.hotkey('ctrl', 'v')  # ctrl-v to paste
 # pyautogui.keyDown(key_name)   # Button down
 # pyautogui.keyUp(key_name)     # Button up
+# pyautogui.press() # press a single key
