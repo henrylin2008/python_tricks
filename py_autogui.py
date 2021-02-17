@@ -34,3 +34,9 @@ pyautogui.typewrite(['enter'])
 # pyautogui.keyDown(key_name)   # Button down
 # pyautogui.keyUp(key_name)     # Button up
 # pyautogui.press() # press a single key
+
+
+# Screenshot Functions
+# pyautogui.screenshot("/Users/hlin/Downloads/screenshot1.png") # screenshot with the file name and the location
+# pyautogui.locateOnScreen("filename")  # look for picture (filename) on the screen; return (x, y, width, height)
+# pyautogui.locateCenterOnScreen("filename") # locate the center of file/image on the screen
