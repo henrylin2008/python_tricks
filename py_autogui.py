@@ -6,10 +6,12 @@ print(pyautogui.position())
 # print(pyautogui.size())     # current screen resolution width and height
 # pyautogui.onScreen(x, y)  # True if x & y are within the screen.
 
+
 # Fail-Safes
 # pyautogui.PAUSE = 2.5   # set up a 2.5 second pause
 # pyautogui.FAILSAFE = True # moving the mouse to the upper-left will raise a pyautogui.FailSafeException that can
 # abort your program
+
 
 # Mouse Functions
 # pyautogui.moveTo(348, 81, duration=1)  # move mouse to XY coordinates over num_second seconds
@@ -38,9 +40,19 @@ pyautogui.typewrite(['enter'])
 
 # Screenshot Functions
 # pyautogui.screenshot("/Users/hlin/Downloads/screenshot1.png") # screenshot with the file name and the location
-# pyautogui.locateOnScreen("filename")  # look for picture (filename) on the screen; return (x, y, width, height)
-# pyautogui.locateCenterOnScreen("filename") # locate the center of file/image on the screen
+# pyautogui.locateOnScreen("image", greyscale=True)
+# Returns (left, top, width, height) coordinate of first found instance of the image on the screen; Raises I
+# mageNotFoundException if not found on the screen.
+# greyscale=True; locate functions to give a slight speedup (about 30%-ish).
+
+# pyautogui.locateCenterOnScreen("image") # locate the center of file/image on the screen; Raises
+                                          # ImageNotFoundException if not found on the screen.
 # pyautogui.locateAllOnScreen(): function will return a generator for all the locations it is found on the screen
+pyautogui.screenshot(region=(0, 0, 300, 400))  # region=(left, top, width, height)
+pyautogui.screenshot().getpixel((100, 200))    # (130, 135, 144), RGB color of a pixel in a screenshot
+pyautogui.pixelMatchesColor(100, 200, (130, 135, 144))  # True; verify a single pixel matches a given pixel
+pyautogui.pixelMatchesColor(100, 200, (140, 125, 134), tolerance=10)    # True;
+# tolerance keyword argument specifies how much each of the red, green, and blue values can vary while still matching
 
 
 # Message Box functions
