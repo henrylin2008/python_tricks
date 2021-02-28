@@ -67,7 +67,3 @@ type()
 vars()
 zip()
 __import__()
-
-
-
-
