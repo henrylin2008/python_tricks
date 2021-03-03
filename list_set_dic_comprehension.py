@@ -15,3 +15,10 @@ print(new_list)
 # [('John', 'Evan'), ('John', 'Jack'), ('John', 'Jerry'), ('Avi', 'Evan'), ('Avi', 'Jack'), ('Avi', 'Jerry'),
 # ('Mary', 'Evan'), ('Mary', 'Jack'), ('Mary', 'Jerry')]
 
+
+# Set comprehension:
+word = "sweet"
+new_word = {i for i in word}  # no repeat string
+print(new_word)               # {'t', 's', 'e', 'w'}
+
+
