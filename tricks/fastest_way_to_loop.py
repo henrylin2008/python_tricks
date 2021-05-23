@@ -3,6 +3,11 @@ import numpy
 
 """
 Sum the numbers from 0 to n-1 in different ways.
+Runtime from best to worst:
+1. Use mathematics, not using a loop 
+2. Use a pure C function (Numpy)
+3. Use Python built-in function (Sum, Math)
+4. Use a For loop over a While loop  
 """
 
 
