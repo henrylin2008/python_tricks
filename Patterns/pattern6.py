@@ -19,7 +19,7 @@ def pattern(n):
 
 pattern(5)
 
-#Output:
+# Output:
 #         *
 #       * *
 #     * * *
